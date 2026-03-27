@@ -278,9 +278,7 @@ export class GitOps {
       return { ok: true, conflicts: [], message: "No changes to apply" }
     }
 
-    const result = await this.exec(["apply", "--3way", "--check", "--whitespace=nowarn", "-"], targetPath, {
-      stdin: patch,
-    })
+    const result = await this.patch(["apply", "--3way", "--check", "--whitespace=nowarn"], targetPath, patch)
     if (result.code === 0) {
       return { ok: true, conflicts: [], message: "Patch applies cleanly" }
     }
@@ -296,7 +294,7 @@ export class GitOps {
       return { ok: true, conflicts: [], message: "No changes to apply" }
     }
 
-    const result = await this.exec(["apply", "--3way", "--whitespace=nowarn", "-"], targetPath, { stdin: patch })
+    const result = await this.patch(["apply", "--3way", "--whitespace=nowarn"], targetPath, patch)
     if (result.code === 0) {
       return { ok: true, conflicts: [], message: "Patch applied" }
     }
@@ -345,6 +343,19 @@ export class GitOps {
     const first = lines[0]
     if (first) return [{ reason: first }]
     return [{ reason: "Patch does not apply cleanly" }]
+  }
+
+  private async patch(args: string[], cwd: string, patch: string): Promise<ExecResult> {
+    const tmp = await fs.mkdtemp(nodePath.join(os.tmpdir(), "kilo-patch-"))
+    const file = nodePath.join(tmp, "patch.diff")
+    const body = patch.endsWith("\n") ? patch : `${patch}\n`
+
+    try {
+      await fs.writeFile(file, body, "utf8")
+      return await this.exec([...args, file], cwd)
+    } finally {
+      await fs.rm(tmp, { recursive: true, force: true })
+    }
   }
 
   private exec(args: string[], cwd: string, options?: ExecOptions): Promise<ExecResult> {

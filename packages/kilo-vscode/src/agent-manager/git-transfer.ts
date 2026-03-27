@@ -1,4 +1,5 @@
 import * as nodePath from "path"
+import * as os from "os"
 import * as fs from "fs/promises"
 import * as cp from "child_process"
 
@@ -29,38 +30,40 @@ export interface UntrackedFile {
 
 const MAX_FILE = 10 * 1024 * 1024 // 10 MB
 
-function git(args: string[], cwd: string, stdin?: string): Promise<{ code: number; stdout: string; stderr: string }> {
+function git(args: string[], cwd: string): Promise<{ code: number; stdout: string; stderr: string }> {
   return new Promise((resolve) => {
-    if (stdin !== undefined) {
-      // Use spawn for stdin piping — execFile doesn't reliably create a stdin pipe
-      const child = cp.spawn("git", args, { cwd, windowsHide: true })
-      let stdout = ""
-      let stderr = ""
-      child.stdout.on("data", (d: Buffer) => (stdout += d.toString()))
-      child.stderr.on("data", (d: Buffer) => (stderr += d.toString()))
-      child.on("close", (code) => resolve({ code: code ?? 1, stdout, stderr }))
-      child.stdin.end(stdin)
-    } else {
-      cp.execFile(
-        "git",
-        args,
-        { cwd, encoding: "utf8", maxBuffer: 64 * 1024 * 1024, windowsHide: true },
-        (error, stdout, stderr) => {
-          if (!error) {
-            resolve({ code: 0, stdout, stderr })
-            return
-          }
-          const exec = error as cp.ExecException
-          resolve({ code: typeof exec.code === "number" ? exec.code : 1, stdout: stdout ?? "", stderr: stderr ?? "" })
-        },
-      )
-    }
+    cp.execFile(
+      "git",
+      args,
+      { cwd, encoding: "utf8", maxBuffer: 64 * 1024 * 1024, windowsHide: true },
+      (error, stdout, stderr) => {
+        if (!error) {
+          resolve({ code: 0, stdout, stderr })
+          return
+        }
+        const exec = error as cp.ExecException
+        resolve({ code: typeof exec.code === "number" ? exec.code : 1, stdout: stdout ?? "", stderr: stderr ?? "" })
+      },
+    )
   })
 }
 
 async function raw(args: string[], cwd: string): Promise<string> {
   const result = await git(args, cwd)
   return result.stdout.trim()
+}
+
+async function patch(args: string[], cwd: string, input: string): Promise<{ code: number; stdout: string; stderr: string }> {
+  const tmp = await fs.mkdtemp(nodePath.join(os.tmpdir(), "kilo-patch-"))
+  const file = nodePath.join(tmp, "patch.diff")
+  const body = input.endsWith("\n") ? input : `${input}\n`
+
+  try {
+    await fs.writeFile(file, body, "utf8")
+    return await git([...args, file], cwd)
+  } finally {
+    await fs.rm(tmp, { recursive: true, force: true })
+  }
 }
 
 /**
@@ -114,7 +117,7 @@ export async function apply(
 ): Promise<{ ok: boolean; error?: string }> {
   // Apply staged patch first, then re-stage those files
   if (snapshot.staged) {
-    const result = await git(["apply", "--whitespace=nowarn", "-"], target, snapshot.staged)
+    const result = await patch(["apply", "--whitespace=nowarn"], target, snapshot.staged)
     if (result.code !== 0) {
       const msg = result.stderr.trim() || "Patch did not apply"
       log("Failed to apply staged patch:", msg)
@@ -128,7 +131,7 @@ export async function apply(
 
   // Apply unstaged patch (leave as unstaged working-tree changes)
   if (snapshot.unstaged) {
-    const result = await git(["apply", "--whitespace=nowarn", "-"], target, snapshot.unstaged)
+    const result = await patch(["apply", "--whitespace=nowarn"], target, snapshot.unstaged)
     if (result.code !== 0) {
       const msg = result.stderr.trim() || "Patch did not apply"
       log("Failed to apply unstaged patch:", msg)
