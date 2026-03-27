@@ -1,81 +1,39 @@
-# Kilo Code CLI
+# Kilo Runtime
 
-The AI coding agent built for the terminal. Generate code from natural language, automate tasks, and run terminal commands -- powered by 500+ AI models.
+This package is the bundled runtime shipped inside `kilocode-- (kilocode lite)`.
 
-## Install
+It contains the agent runtime, HTTP server, session system, tools, and terminal UI that the VS Code extension launches in the background through `kilo serve`.
 
-```bash
-npm install -g @kilocode/cli
-```
+## What Lives Here
 
-Or run directly with npx:
+- agent orchestration and tool execution
+- the local HTTP and SSE server used by the extension
+- session storage, permissions, worktrees, and review flows
+- the bundled `kilo` binary that gets packaged into the VSIX
 
-```bash
-npx --package @kilocode/cli kilo
-```
+## Development
 
-## Getting Started
-
-Run `kilo` in any project directory to launch the interactive TUI:
+Run the runtime directly during local development:
 
 ```bash
-kilo
+bun run dev
 ```
 
-Run a one-off task:
+Run CLI tests from this package:
 
 ```bash
-kilo run "add input validation to the signup form"
+bun test
 ```
 
-## Features
-
-- **Code generation** -- describe what you want in natural language
-- **Terminal commands** -- the agent can run shell commands on your behalf
-- **500+ AI models** -- use models from OpenAI, Anthropic, Google, and more
-- **MCP servers** -- extend agent capabilities with the Model Context Protocol
-- **Multiple modes** -- Plan with Architect, code with Coder, debug with Debugger, or create your own
-- **Sessions** -- resume previous conversations and export transcripts
-- **API keys optional** -- bring your own keys or use Kilo credits
-
-## Commands
-
-| Command               | Description                |
-| --------------------- | -------------------------- |
-| `kilo`                | Launch interactive TUI     |
-| `kilo run "<task>"`   | Run a one-off task         |
-| `kilo auth`           | Manage authentication      |
-| `kilo models`         | List available models      |
-| `kilo mcp`            | Manage MCP servers         |
-| `kilo session list`   | List sessions              |
-| `kilo session delete` | Delete a session           |
-| `kilo export`         | Export session transcripts |
-
-Run `kilo --help` for the full list.
-
-## Alternative Installation
-
-### Homebrew (macOS/Linux)
+Build release binaries used by the extension:
 
 ```bash
-brew install Kilo-Org/tap/kilo
+./script/build.ts
 ```
 
-### GitHub Releases
+## Scope
 
-Download pre-built binaries from the [Releases page](https://github.com/Kilo-Org/kilocode/releases).
-
-## Documentation
-
-- [Docs](https://kilo.ai/docs)
-- [Getting Started](https://kilo.ai/docs/getting-started)
-
-## Links
-
-- [GitHub](https://github.com/Kilo-Org/kilocode)
-- [Discord](https://kilo.ai/discord)
-- [VS Code Extension](https://kilo.ai/vscode-marketplace)
-- [Website](https://kilo.ai)
+This repo is no longer maintained as a standalone multi-product distribution. The runtime remains here because the VS Code extension depends on it.
 
 ## License
 

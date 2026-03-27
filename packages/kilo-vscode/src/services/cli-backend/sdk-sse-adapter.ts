@@ -8,7 +8,7 @@ export type SSEStateHandler = (state: "connecting" | "connected" | "disconnected
  * SSE adapter that consumes the SDK's `client.global.event()` AsyncGenerator
  * and distributes events to subscribers via a pub/sub interface.
  *
- * Follows the same reconnection pattern as the app (`packages/app/src/context/global-sdk.tsx`):
+ * Follows the extension webview reconnection strategy:
  *   - Outer `while (!aborted)` loop for reconnection
  *   - Per-attempt AbortController so heartbeat timeout can cancel a stale connection
  *   - Heartbeat timeout to detect zombie connections
@@ -34,8 +34,8 @@ export class SdkSSEAdapter {
   private abortController: AbortController | null = null
   private heartbeatTimer: ReturnType<typeof setTimeout> | null = null
 
-  // 15s matches packages/app/src/context/global-sdk.tsx — server sends heartbeats
-  // every 10s, so this gives a 5s grace window before forcing a reconnect.
+  // Server heartbeats arrive every 10s, so 15s gives a short grace window
+  // before forcing a reconnect.
   // Reduced from 90s: with 90s a dead connection could linger for ~1.5 minutes.
   private static readonly HEARTBEAT_TIMEOUT_MS = 15_000
   private static readonly RECONNECT_DELAY_MS = 250

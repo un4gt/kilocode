@@ -152,7 +152,7 @@ describe("Glob", () => {
 
     test("matches dot files", () => {
       expect(Glob.match(".*", ".gitignore")).toBe(true)
-      expect(Glob.match("**/*.md", ".github/README.md")).toBe(true)
+      expect(Glob.match("**/*.md", ".github/pull_request_template.md")).toBe(true)
     })
 
     test("matches brace expansion", () => {

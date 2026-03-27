@@ -3,6 +3,8 @@ import { $ } from "bun"
 import { join } from "node:path"
 import { existsSync, mkdirSync, rmSync, chmodSync } from "node:fs"
 
+const PREFIX = "kilocode-lite"
+
 const packageJsonPath = join(import.meta.dir, "..", "package.json")
 const packageJson = await Bun.file(packageJsonPath).json()
 const version = process.env.KILO_VERSION ? process.env.KILO_VERSION : packageJson.version
@@ -83,14 +85,14 @@ for (const config of targets) {
   console.log(`  ✅ Binary ready at ${targetBinary}`)
 
   console.log(`  📦 Packaging .vsix for ${config.target}...`)
-  const vsixPath = join(outDir, `kilo-vscode-${config.target}.vsix`)
+  const vsixPath = join(outDir, `${PREFIX}-${config.target}.vsix`)
   await $`vsce package --pre-release --no-dependencies --skip-license --target ${config.target} -o ${vsixPath}`.env({
     ...process.env,
     npm_config_ignore_scripts: "true",
   })
   console.log(`  ✅ Created ${vsixPath}`)
 
-  const prodVsixPath = join(outDirProd, `kilo-vscode-${config.target}.vsix`)
+  const prodVsixPath = join(outDirProd, `${PREFIX}-${config.target}.vsix`)
   await $`vsce package --no-dependencies --skip-license --target ${config.target} -o ${prodVsixPath}`.env({
     ...process.env,
     npm_config_ignore_scripts: "true",

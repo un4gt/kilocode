@@ -34,7 +34,7 @@ for (const dir of ["bin", "dist"]) {
   }
 }
 
-const outDir = join(tmpdir(), "kilo-vscode-snapshots")
+const outDir = join(tmpdir(), "kilocode-lite-snapshots")
 mkdirSync(outDir, { recursive: true })
 
 console.log("\n📦 Rebuilding SDK...")
@@ -53,7 +53,7 @@ console.log("\n🏗️  Building extension...")
 await $`node ${join(root, "esbuild.js")} --production`.cwd(root)
 
 console.log("\n📦 Packaging VSIX...")
-const vsixPath = join(outDir, `kilo-vscode-snapshot-${sha}-${user}.vsix`)
+const vsixPath = join(outDir, `kilocode-lite-snapshot-${sha}-${user}.vsix`)
 await $`bunx vsce package ${snapshotVersion} --no-update-package-json --no-dependencies --skip-license -o ${vsixPath}`.cwd(
   root,
 )

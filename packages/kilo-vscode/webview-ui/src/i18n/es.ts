@@ -590,8 +590,6 @@ export const dict = {
   "sidebar.project.recentSessions": "Sesiones recientes",
   "sidebar.project.viewAllSessions": "Ver todas las sesiones",
 
-  "app.name.desktop": "Kilo Desktop",
-  "settings.section.desktop": "Escritorio",
   "settings.section.server": "Servidor",
   "settings.tab.general": "General",
   "settings.tab.shortcuts": "Atajos",
@@ -880,7 +878,7 @@ export const dict = {
   "deviceAuth.toast.codeCopied": "Código copiado al portapapeles",
   "deviceAuth.toast.errorCopied": "Error copiado al portapapeles",
   "deviceAuth.status.initiating": "Iniciando sesión...",
-  "deviceAuth.title": "Iniciar sesión en Kilo Code",
+  "deviceAuth.title": "Iniciar sesión en kilocode--",
   "deviceAuth.step1": "Paso 1: Abre esta URL",
   "deviceAuth.action.copyUrl": "Copiar URL",
   "deviceAuth.action.openBrowser": "Abrir navegador",
@@ -901,7 +899,7 @@ export const dict = {
 
   "profile.title": "Perfil",
   "profile.notLoggedIn": "No conectado",
-  "profile.action.login": "Iniciar sesión con Kilo Code",
+  "profile.action.login": "Iniciar sesión con kilocode--",
   "profile.balance.title": "Saldo",
   "profile.balance.refresh": "Actualizar saldo",
   "profile.action.dashboard": "Panel",
@@ -920,11 +918,11 @@ export const dict = {
   "settings.prompts.title": "Prompts",
   "settings.experimental.title": "Experimental",
   "settings.language.title": "Idioma",
-  "settings.aboutKiloCode.title": "Acerca de Kilo Code",
+  "settings.aboutKiloCode.title": "Acerca de kilocode--",
 
   "session.messages.empty": "Inicia una conversación escribiendo un mensaje a continuación.",
   "session.messages.welcome":
-    "Kilo Code es un asistente de programación con IA. Pídele que cree funcionalidades, corrija errores o explique tu código.",
+    "kilocode-- es un asistente de programación con IA. Pídele que cree funcionalidades, corrija errores o explique tu código.",
   "session.messages.scrollToBottom": "Desplazar al final",
   "session.status.writingResponse": "Escribiendo respuesta…",
   "session.status.retry": "Reintentando…",
@@ -959,14 +957,14 @@ export const dict = {
   "settings.aboutKiloCode.port.label": "Puerto:",
   "settings.aboutKiloCode.versionInfo": "Información de versión",
   "settings.aboutKiloCode.version.label": "Versión:",
-  "settings.aboutKiloCode.extensionName": "Extensión Kilo Code",
+  "settings.aboutKiloCode.extensionName": "Extensión kilocode--",
   "settings.aboutKiloCode.community": "Comunidad y soporte",
   "settings.aboutKiloCode.feedback.prefix": "Si tienes preguntas o comentarios, abre un issue en",
   "settings.aboutKiloCode.feedback.or": "o",
   "settings.aboutKiloCode.support.prefix": "Para preguntas de facturación o cuenta, contacta al Soporte al Cliente en",
   "settings.aboutKiloCode.resetSettings.title": "Restablecer configuración",
   "settings.aboutKiloCode.resetSettings.description":
-    "Restablecer todas las configuraciones de la extensión Kilo Code a sus valores predeterminados. Esto no afecta la configuración del CLI o del backend.",
+    "Restablecer todas las configuraciones de la extensión kilocode-- a sus valores predeterminados. Esto no afecta la configuración del CLI o del backend.",
   "settings.aboutKiloCode.resetSettings.button": "Restablecer toda la configuración",
 
   "settings.agentBehaviour.subtab.modes": "Modos",
@@ -987,7 +985,7 @@ export const dict = {
   "settings.browser.headless.description": "Ejecutar en modo headless (sin ventana de navegador visible).",
 
   "settings.language.description":
-    'Elige el idioma de la interfaz de Kilo Code. "Auto" utiliza el idioma de visualización de VS Code.',
+    'Elige el idioma de la interfaz de kilocode--. "Auto" utiliza el idioma de visualización de VS Code.',
   "settings.language.auto": "Auto (idioma de VS Code)",
   "settings.language.current": "Actual:",
 
@@ -1217,10 +1215,10 @@ export const dict = {
   "settings.legacyMigration.link": "Migrar desde la versión heredada",
   "settings.aboutKiloCode.legacyMigration.title": "Migración heredada",
   "settings.aboutKiloCode.legacyMigration.description":
-    "Migra la configuración de una instalación anterior de Kilo Code, incluyendo las claves API de proveedores y el modelo predeterminado.",
+    "Migra la configuración de una instalación anterior de kilocode--, incluyendo las claves API de proveedores y el modelo predeterminado.",
 
   // Screen 1 — What's New
-  "migration.whatsNew.title": "Novedades en Kilo Code",
+  "migration.whatsNew.title": "Novedades en kilocode--",
   "migration.whatsNew.badge": "Beta",
   "migration.whatsNew.subtitle": "Hemos reconstruido la extensión sobre una base más rápida y eficiente.",
   "migration.whatsNew.features.performance.title": "Rendimiento de agente más rápido",

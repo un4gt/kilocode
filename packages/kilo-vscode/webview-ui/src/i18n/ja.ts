@@ -586,8 +586,6 @@ export const dict = {
   "sidebar.project.recentSessions": "最近のセッション",
   "sidebar.project.viewAllSessions": "すべてのセッションを表示",
 
-  "app.name.desktop": "Kilo Desktop",
-  "settings.section.desktop": "デスクトップ",
   "settings.section.server": "サーバー",
   "settings.tab.general": "一般",
   "settings.tab.shortcuts": "ショートカット",
@@ -872,7 +870,7 @@ export const dict = {
   "deviceAuth.toast.codeCopied": "コードをクリップボードにコピーしました",
   "deviceAuth.toast.errorCopied": "エラーがクリップボードにコピーされました",
   "deviceAuth.status.initiating": "ログインを開始しています...",
-  "deviceAuth.title": "Kilo Codeにサインイン",
+  "deviceAuth.title": "kilocode--にサインイン",
   "deviceAuth.step1": "ステップ1：このURLを開く",
   "deviceAuth.action.copyUrl": "URLをコピー",
   "deviceAuth.action.openBrowser": "ブラウザを開く",
@@ -893,7 +891,7 @@ export const dict = {
 
   "profile.title": "プロフィール",
   "profile.notLoggedIn": "ログインしていません",
-  "profile.action.login": "Kilo Codeでログイン",
+  "profile.action.login": "kilocode--でログイン",
   "profile.balance.title": "残高",
   "profile.balance.refresh": "残高を更新",
   "profile.action.dashboard": "ダッシュボード",
@@ -912,11 +910,11 @@ export const dict = {
   "settings.prompts.title": "プロンプト",
   "settings.experimental.title": "実験的機能",
   "settings.language.title": "言語",
-  "settings.aboutKiloCode.title": "Kilo Codeについて",
+  "settings.aboutKiloCode.title": "kilocode--について",
 
   "session.messages.empty": "下にメッセージを入力して会話を始めましょう。",
   "session.messages.welcome":
-    "Kilo CodeはAIコーディングアシスタントです。機能の構築、バグの修正、コードベースの説明を依頼できます。",
+    "kilocode--はAIコーディングアシスタントです。機能の構築、バグの修正、コードベースの説明を依頼できます。",
   "session.messages.scrollToBottom": "下にスクロール",
   "session.status.writingResponse": "応答を作成中…",
   "session.status.retry": "再試行中…",
@@ -951,7 +949,7 @@ export const dict = {
   "settings.aboutKiloCode.port.label": "ポート：",
   "settings.aboutKiloCode.versionInfo": "バージョン情報",
   "settings.aboutKiloCode.version.label": "バージョン：",
-  "settings.aboutKiloCode.extensionName": "Kilo Code拡張機能",
+  "settings.aboutKiloCode.extensionName": "kilocode--拡張機能",
   "settings.aboutKiloCode.community": "コミュニティとサポート",
   "settings.aboutKiloCode.feedback.prefix": "ご質問やフィードバックがありましたら、お気軽にissueを作成してください",
   "settings.aboutKiloCode.feedback.or": "または",
@@ -959,7 +957,7 @@ export const dict = {
     "請求やアカウントに関するご質問は、カスタマーサポートまでお問い合わせください",
   "settings.aboutKiloCode.resetSettings.title": "設定をリセット",
   "settings.aboutKiloCode.resetSettings.description":
-    "Kilo Code拡張機能のすべての設定をデフォルト値にリセットします。CLIやバックエンドの設定には影響しません。",
+    "kilocode--拡張機能のすべての設定をデフォルト値にリセットします。CLIやバックエンドの設定には影響しません。",
   "settings.aboutKiloCode.resetSettings.button": "すべての設定をリセット",
 
   "settings.agentBehaviour.subtab.modes": "モード",
@@ -979,7 +977,7 @@ export const dict = {
   "settings.browser.headless.title": "ヘッドレスモード",
   "settings.browser.headless.description": "ヘッドレスモードで実行します（ブラウザウィンドウは表示されません）。",
 
-  "settings.language.description": "Kilo Code UIの言語を選択します。「自動」はVS Codeの表示言語を使用します。",
+  "settings.language.description": "kilocode-- UIの言語を選択します。「自動」はVS Codeの表示言語を使用します。",
   "settings.language.auto": "自動（VS Code言語）",
   "settings.language.current": "現在：",
 
@@ -1203,10 +1201,10 @@ export const dict = {
   "settings.legacyMigration.link": "レガシーバージョンからの移行",
   "settings.aboutKiloCode.legacyMigration.title": "レガシー移行",
   "settings.aboutKiloCode.legacyMigration.description":
-    "プロバイダーのAPIキーやデフォルトモデルなど、以前にインストールしたKilo Codeから設定を移行します。",
+    "プロバイダーのAPIキーやデフォルトモデルなど、以前にインストールしたkilocode--から設定を移行します。",
 
   // Screen 1 — What's New
-  "migration.whatsNew.title": "Kilo Codeの新機能",
+  "migration.whatsNew.title": "kilocode--の新機能",
   "migration.whatsNew.badge": "Beta",
   "migration.whatsNew.subtitle": "より高速で効率的な基盤上に拡張機能を再構築しました。",
   "migration.whatsNew.features.performance.title": "高速なエージェントパフォーマンス",

@@ -12,10 +12,10 @@ export default {
     docs: {
       description: {
         component: `### Overview
-This playground renders the real session composer region from app code.
+This playground renders the real session composer region used during the earlier shared-client implementation.
 
 ### Source path
-- \`packages/app/src/pages/session/composer/session-composer-region.tsx\`
+- historical shared-client session composer implementation
 
 ### Includes
 - \`SessionTodoDock\` (real)

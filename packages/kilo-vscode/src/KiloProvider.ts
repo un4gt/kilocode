@@ -2283,7 +2283,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
    */
   private async handleResetAllSettings(): Promise<void> {
     const confirmed = await vscode.window.showWarningMessage(
-      "Reset all Kilo Code extension settings to defaults?",
+      "Reset all kilocode-- extension settings to defaults?",
       { modal: true },
       "Reset",
     )
@@ -2627,7 +2627,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
       scriptUri: webview.asWebviewUri(vscode.Uri.joinPath(this.extensionUri, "dist", "webview.js")),
       styleUri: webview.asWebviewUri(vscode.Uri.joinPath(this.extensionUri, "dist", "webview.css")),
       iconsBaseUri: webview.asWebviewUri(vscode.Uri.joinPath(this.extensionUri, "assets", "icons")),
-      title: "Kilo Code",
+      title: "kilocode--",
       port: this.connectionService.getServerInfo()?.port,
       extraStyles: `.container { height: 100%; display: flex; flex-direction: column; height: 100vh; border-right: 1px solid var(--border-weak-base); }`,
     })

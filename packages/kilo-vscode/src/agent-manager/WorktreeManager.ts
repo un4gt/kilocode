@@ -502,20 +502,20 @@ export class WorktreeManager {
     const gitDir = await this.resolveGitDir()
     const excludePath = path.join(gitDir, "info", "exclude")
     const items = [
-      [".kilo/worktrees/", "Kilo Code agent worktrees"],
+      [".kilo/worktrees/", "kilocode-- agent worktrees"],
       [".kilo/agent-manager.json", "Kilo Agent Manager state"],
-      [".kilo/setup-script", "Kilo Code worktree setup script"],
-      [".kilo/setup-script.sh", "Kilo Code worktree setup script"],
-      [".kilo/setup-script.ps1", "Kilo Code worktree setup script"],
-      [".kilo/setup-script.cmd", "Kilo Code worktree setup script"],
-      [".kilo/setup-script.bat", "Kilo Code worktree setup script"],
-      [".kilocode/worktrees/", "Kilo Code legacy agent worktrees"],
+      [".kilo/setup-script", "kilocode-- worktree setup script"],
+      [".kilo/setup-script.sh", "kilocode-- worktree setup script"],
+      [".kilo/setup-script.ps1", "kilocode-- worktree setup script"],
+      [".kilo/setup-script.cmd", "kilocode-- worktree setup script"],
+      [".kilo/setup-script.bat", "kilocode-- worktree setup script"],
+      [".kilocode/worktrees/", "kilocode-- legacy agent worktrees"],
       [".kilocode/agent-manager.json", "Kilo Agent Manager legacy state"],
-      [".kilocode/setup-script", "Kilo Code legacy worktree setup script"],
-      [".kilocode/setup-script.sh", "Kilo Code legacy worktree setup script"],
-      [".kilocode/setup-script.ps1", "Kilo Code legacy worktree setup script"],
-      [".kilocode/setup-script.cmd", "Kilo Code legacy worktree setup script"],
-      [".kilocode/setup-script.bat", "Kilo Code legacy worktree setup script"],
+      [".kilocode/setup-script", "kilocode-- legacy worktree setup script"],
+      [".kilocode/setup-script.sh", "kilocode-- legacy worktree setup script"],
+      [".kilocode/setup-script.ps1", "kilocode-- legacy worktree setup script"],
+      [".kilocode/setup-script.cmd", "kilocode-- legacy worktree setup script"],
+      [".kilocode/setup-script.bat", "kilocode-- legacy worktree setup script"],
     ] as const
 
     for (const [entry, comment] of items) {
@@ -531,7 +531,7 @@ export class WorktreeManager {
 
       const worktreeGitDir = path.resolve(worktreePath, match[1].trim())
       const mainGitDir = path.dirname(path.dirname(worktreeGitDir))
-      await this.addExcludeEntry(path.join(mainGitDir, "info", "exclude"), `${KILO_DIR}/`, "Kilo Code session metadata")
+      await this.addExcludeEntry(path.join(mainGitDir, "info", "exclude"), `${KILO_DIR}/`, "kilocode-- session metadata")
     } catch (error) {
       this.log(`Warning: Failed to update git exclude for worktree: ${error}`)
     }

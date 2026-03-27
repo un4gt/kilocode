@@ -590,9 +590,6 @@ export const dict = {
   "sidebar.project.recentSessions": "Recente sessies",
   "sidebar.project.viewAllSessions": "Bekijk alle sessies",
 
-  "app.name.desktop": "Kilo Desktop",
-
-  "settings.section.desktop": "Desktop",
   "settings.section.server": "Server",
   "settings.tab.general": "Algemeen",
   "settings.tab.shortcuts": "Sneltoetsen",
@@ -872,7 +869,7 @@ export const dict = {
   "deviceAuth.toast.codeCopied": "Code gekopieerd naar klembord",
   "deviceAuth.toast.errorCopied": "Fout gekopieerd naar klembord",
   "deviceAuth.status.initiating": "Inloggen starten...",
-  "deviceAuth.title": "Meld je aan bij Kilo Code",
+  "deviceAuth.title": "Meld je aan bij kilocode--",
   "deviceAuth.step1": "Stap 1: Open deze URL",
   "deviceAuth.action.copyUrl": "Kopieer URL",
   "deviceAuth.action.openBrowser": "Open Browser",
@@ -893,7 +890,7 @@ export const dict = {
 
   "profile.title": "Profiel",
   "profile.notLoggedIn": "Niet ingelogd",
-  "profile.action.login": "Inloggen met Kilo Code",
+  "profile.action.login": "Inloggen met kilocode--",
   "profile.balance.title": "Saldo",
   "profile.balance.refresh": "Saldo vernieuwen",
   "profile.action.dashboard": "Dashboard",
@@ -912,11 +909,11 @@ export const dict = {
   "settings.prompts.title": "Prompts",
   "settings.experimental.title": "Experimenteel",
   "settings.language.title": "Taal",
-  "settings.aboutKiloCode.title": "Over Kilo Code",
+  "settings.aboutKiloCode.title": "Over kilocode--",
 
   "session.messages.empty": "Start een gesprek door hieronder een bericht te typen.",
   "session.messages.welcome":
-    "Kilo Code is een AI-codeerassistent. Vraag het om features te bouwen, bugs op te lossen of je codebase uit te leggen.",
+    "kilocode-- is een AI-codeerassistent. Vraag het om features te bouwen, bugs op te lossen of je codebase uit te leggen.",
   "session.messages.scrollToBottom": "Scroll naar beneden",
   "session.status.writingResponse": "Antwoord schrijven...",
   "session.status.retry": "Opnieuw proberen...",
@@ -951,7 +948,7 @@ export const dict = {
   "settings.aboutKiloCode.port.label": "Poort:",
   "settings.aboutKiloCode.versionInfo": "Versie-informatie",
   "settings.aboutKiloCode.version.label": "Versie:",
-  "settings.aboutKiloCode.extensionName": "Kilo Code Extensie",
+  "settings.aboutKiloCode.extensionName": "kilocode-- Extensie",
   "settings.aboutKiloCode.community": "Community & Ondersteuning",
   "settings.aboutKiloCode.feedback.prefix": "Als je vragen of feedback hebt, voel je vrij om een issue aan te maken op",
   "settings.aboutKiloCode.feedback.or": "of",
@@ -959,7 +956,7 @@ export const dict = {
     "Voor vragen over facturering of je account, neem contact op met Klantenservice op",
   "settings.aboutKiloCode.resetSettings.title": "Instellingen resetten",
   "settings.aboutKiloCode.resetSettings.description":
-    "Reset alle instellingen van de Kilo Code extensie naar hun standaardwaarden. Dit heeft geen invloed op CLI of backend configuratie.",
+    "Reset alle instellingen van de kilocode-- extensie naar hun standaardwaarden. Dit heeft geen invloed op CLI of backend configuratie.",
   "settings.aboutKiloCode.resetSettings.button": "Alle instellingen resetten",
 
   "settings.agentBehaviour.subtab.modes": "Modi",
@@ -979,7 +976,7 @@ export const dict = {
   "settings.browser.headless.title": "Headless Modus",
   "settings.browser.headless.description": "Draai in headless modus (geen zichtbaar browservenster).",
 
-  "settings.language.description": 'Kies de taal voor de Kilo Code UI. "Auto" gebruikt je VS Code schermtaal.',
+  "settings.language.description": 'Kies de taal voor de kilocode-- UI. "Auto" gebruikt je VS Code schermtaal.',
   "settings.language.auto": "Auto (VS Code taal)",
   "settings.language.current": "Huidig:",
 
@@ -1209,10 +1206,10 @@ export const dict = {
   "settings.legacyMigration.link": "Migreer van Legacy Versie",
   "settings.aboutKiloCode.legacyMigration.title": "Legacy Migratie",
   "settings.aboutKiloCode.legacyMigration.description":
-    "Migreer instellingen van een eerdere installatie van Kilo Code, inclusief provider API-sleutels en standaard model.",
+    "Migreer instellingen van een eerdere installatie van kilocode--, inclusief provider API-sleutels en standaard model.",
 
   // Screen 1 — What's New
-  "migration.whatsNew.title": "Wat is er Nieuw in Kilo Code",
+  "migration.whatsNew.title": "Wat is er Nieuw in kilocode--",
   "migration.whatsNew.badge": "Bèta",
   "migration.whatsNew.subtitle": "We hebben de extensie opnieuw opgebouwd op een snellere, efficiëntere basis.",
   "migration.whatsNew.features.performance.title": "Snellere Agent Prestaties",

@@ -14,26 +14,26 @@ export class KiloCodeActionProvider implements vscode.CodeActionProvider {
 
     const actions: vscode.CodeAction[] = []
 
-    const add = new vscode.CodeAction("Add to Kilo Code", vscode.CodeActionKind.RefactorRewrite)
-    add.command = { command: "kilo-code.new.addToContext", title: "Add to Kilo Code" }
+    const add = new vscode.CodeAction("Add to kilocode--", vscode.CodeActionKind.RefactorRewrite)
+    add.command = { command: "kilo-code.new.addToContext", title: "Add to kilocode--" }
     actions.push(add)
 
     const hasDiagnostics = context.diagnostics.length > 0
 
     if (hasDiagnostics) {
-      const fix = new vscode.CodeAction("Fix with Kilo Code", vscode.CodeActionKind.QuickFix)
-      fix.command = { command: "kilo-code.new.fixCode", title: "Fix with Kilo Code" }
+      const fix = new vscode.CodeAction("Fix with kilocode--", vscode.CodeActionKind.QuickFix)
+      fix.command = { command: "kilo-code.new.fixCode", title: "Fix with kilocode--" }
       fix.isPreferred = true
       actions.push(fix)
     }
 
     if (!hasDiagnostics) {
-      const explain = new vscode.CodeAction("Explain with Kilo Code", vscode.CodeActionKind.RefactorRewrite)
-      explain.command = { command: "kilo-code.new.explainCode", title: "Explain with Kilo Code" }
+      const explain = new vscode.CodeAction("Explain with kilocode--", vscode.CodeActionKind.RefactorRewrite)
+      explain.command = { command: "kilo-code.new.explainCode", title: "Explain with kilocode--" }
       actions.push(explain)
 
-      const improve = new vscode.CodeAction("Improve with Kilo Code", vscode.CodeActionKind.RefactorRewrite)
-      improve.command = { command: "kilo-code.new.improveCode", title: "Improve with Kilo Code" }
+      const improve = new vscode.CodeAction("Improve with kilocode--", vscode.CodeActionKind.RefactorRewrite)
+      improve.command = { command: "kilo-code.new.improveCode", title: "Improve with kilocode--" }
       actions.push(improve)
     }
 

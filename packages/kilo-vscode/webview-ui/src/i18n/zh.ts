@@ -579,8 +579,6 @@ export const dict = {
   "sidebar.project.recentSessions": "最近会话",
   "sidebar.project.viewAllSessions": "查看全部会话",
 
-  "app.name.desktop": "Kilo Desktop",
-  "settings.section.desktop": "桌面",
   "settings.section.server": "服务器",
   "settings.tab.general": "通用",
   "settings.tab.shortcuts": "快捷键",
@@ -861,7 +859,7 @@ export const dict = {
   "deviceAuth.toast.codeCopied": "代码已复制到剪贴板",
   "deviceAuth.toast.errorCopied": "错误已复制到剪贴板",
   "deviceAuth.status.initiating": "正在启动登录...",
-  "deviceAuth.title": "登录 Kilo Code",
+  "deviceAuth.title": "登录 kilocode--",
   "deviceAuth.step1": "步骤 1：打开此 URL",
   "deviceAuth.action.copyUrl": "复制 URL",
   "deviceAuth.action.openBrowser": "打开浏览器",
@@ -882,7 +880,7 @@ export const dict = {
 
   "profile.title": "个人资料",
   "profile.notLoggedIn": "未登录",
-  "profile.action.login": "使用 Kilo Code 登录",
+  "profile.action.login": "使用 kilocode-- 登录",
   "profile.balance.title": "余额",
   "profile.balance.refresh": "刷新余额",
   "profile.action.dashboard": "控制面板",
@@ -901,10 +899,10 @@ export const dict = {
   "settings.prompts.title": "提示词",
   "settings.experimental.title": "实验性功能",
   "settings.language.title": "语言",
-  "settings.aboutKiloCode.title": "关于 Kilo Code",
+  "settings.aboutKiloCode.title": "关于 kilocode--",
 
   "session.messages.empty": "在下方输入消息以开始对话。",
-  "session.messages.welcome": "Kilo Code 是一个 AI 编程助手。让它帮你构建功能、修复 bug 或解释代码库。",
+  "session.messages.welcome": "kilocode-- 是一个 AI 编程助手。让它帮你构建功能、修复 bug 或解释代码库。",
   "session.messages.scrollToBottom": "滚动到底部",
   "session.status.writingResponse": "正在撰写回复…",
   "session.status.retry": "正在重试…",
@@ -939,14 +937,14 @@ export const dict = {
   "settings.aboutKiloCode.port.label": "端口：",
   "settings.aboutKiloCode.versionInfo": "版本信息",
   "settings.aboutKiloCode.version.label": "版本：",
-  "settings.aboutKiloCode.extensionName": "Kilo Code 扩展",
+  "settings.aboutKiloCode.extensionName": "kilocode-- 扩展",
   "settings.aboutKiloCode.community": "社区与支持",
   "settings.aboutKiloCode.feedback.prefix": "如果您有任何问题或反馈，欢迎在以下平台提交 issue",
   "settings.aboutKiloCode.feedback.or": "或",
   "settings.aboutKiloCode.support.prefix": "如有账单或账户问题，请联系客户支持",
   "settings.aboutKiloCode.resetSettings.title": "重置设置",
   "settings.aboutKiloCode.resetSettings.description":
-    "将所有 Kilo Code 扩展设置重置为默认值。这不会影响 CLI 或后端配置。",
+    "将所有 kilocode-- 扩展设置重置为默认值。这不会影响 CLI 或后端配置。",
   "settings.aboutKiloCode.resetSettings.button": "重置所有设置",
 
   "settings.agentBehaviour.subtab.modes": "模式",
@@ -965,7 +963,7 @@ export const dict = {
   "settings.browser.headless.title": "无头模式",
   "settings.browser.headless.description": "以无头模式运行（无可见浏览器窗口）。",
 
-  "settings.language.description": '"自动"将使用 VS Code 的显示语言。选择 Kilo Code 界面的语言。',
+  "settings.language.description": '"自动"将使用 VS Code 的显示语言。选择 kilocode-- 界面的语言。',
   "settings.language.auto": "自动（VS Code 语言）",
   "settings.language.current": "当前：",
 
@@ -1170,10 +1168,10 @@ export const dict = {
   "settings.legacyMigration.link": "从旧版迁移",
   "settings.aboutKiloCode.legacyMigration.title": "旧版迁移",
   "settings.aboutKiloCode.legacyMigration.description":
-    "从旧版 Kilo Code 安装迁移设置，包括提供商 API 密钥和默认模型。",
+    "从旧版 kilocode-- 安装迁移设置，包括提供商 API 密钥和默认模型。",
 
   // Screen 1 — What's New
-  "migration.whatsNew.title": "Kilo Code 新功能",
+  "migration.whatsNew.title": "kilocode-- 新功能",
   "migration.whatsNew.badge": "Beta",
   "migration.whatsNew.subtitle": "我们在更快、更高效的基础上重新构建了扩展。",
   "migration.whatsNew.features.performance.title": "更快的智能体性能",

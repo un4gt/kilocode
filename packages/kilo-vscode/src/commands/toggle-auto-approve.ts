@@ -17,7 +17,7 @@ export type AllDirectories = () => string[]
 /**
  * Runtime auto-accept toggle for permissions.
  *
- * Mirrors the desktop app pattern (packages/app/src/context/permission.tsx):
+ * Mirrors the extension-side auto-approve pattern:
  * instead of writing to the config file, we intercept `permission.asked` SSE
  * events and auto-reply "once" to each. This avoids config-layer issues
  * (merged vs global, sparse defaults) and works even when the sidebar is closed.

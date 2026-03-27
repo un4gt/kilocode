@@ -587,8 +587,6 @@ export const dict = {
   "sidebar.project.recentSessions": "Seneste sessioner",
   "sidebar.project.viewAllSessions": "Vis alle sessioner",
 
-  "app.name.desktop": "Kilo Desktop",
-  "settings.section.desktop": "Desktop",
   "settings.section.server": "Server",
   "settings.tab.general": "Generelt",
   "settings.tab.shortcuts": "Genveje",
@@ -873,7 +871,7 @@ export const dict = {
   "deviceAuth.toast.codeCopied": "Kode kopieret til udklipsholder",
   "deviceAuth.toast.errorCopied": "Fejl kopieret til udklipsholder",
   "deviceAuth.status.initiating": "Starter login...",
-  "deviceAuth.title": "Log ind på Kilo Code",
+  "deviceAuth.title": "Log ind på kilocode--",
   "deviceAuth.step1": "Trin 1: Åbn denne URL",
   "deviceAuth.action.copyUrl": "Kopiér URL",
   "deviceAuth.action.openBrowser": "Åbn browser",
@@ -894,7 +892,7 @@ export const dict = {
 
   "profile.title": "Profil",
   "profile.notLoggedIn": "Ikke logget ind",
-  "profile.action.login": "Log ind med Kilo Code",
+  "profile.action.login": "Log ind med kilocode--",
   "profile.balance.title": "Saldo",
   "profile.balance.refresh": "Opdatér saldo",
   "profile.action.dashboard": "Dashboard",
@@ -913,11 +911,11 @@ export const dict = {
   "settings.prompts.title": "Prompts",
   "settings.experimental.title": "Eksperimentelt",
   "settings.language.title": "Sprog",
-  "settings.aboutKiloCode.title": "Om Kilo Code",
+  "settings.aboutKiloCode.title": "Om kilocode--",
 
   "session.messages.empty": "Start en samtale ved at skrive en besked nedenfor.",
   "session.messages.welcome":
-    "Kilo Code er en AI-kodningsassistent. Bed den om at bygge funktioner, rette fejl eller forklare din kodebase.",
+    "kilocode-- er en AI-kodningsassistent. Bed den om at bygge funktioner, rette fejl eller forklare din kodebase.",
   "session.messages.scrollToBottom": "Rul til bunden",
   "session.status.writingResponse": "Skriver svar…",
   "session.status.retry": "Prøver igen…",
@@ -952,7 +950,7 @@ export const dict = {
   "settings.aboutKiloCode.port.label": "Port:",
   "settings.aboutKiloCode.versionInfo": "Versionsinformation",
   "settings.aboutKiloCode.version.label": "Version:",
-  "settings.aboutKiloCode.extensionName": "Kilo Code-udvidelse",
+  "settings.aboutKiloCode.extensionName": "kilocode---udvidelse",
   "settings.aboutKiloCode.community": "Fællesskab og support",
   "settings.aboutKiloCode.feedback.prefix":
     "Hvis du har spørgsmål eller feedback, er du velkommen til at åbne en issue på",
@@ -960,7 +958,7 @@ export const dict = {
   "settings.aboutKiloCode.support.prefix": "For fakturerings- eller kontospørgsmål, kontakt kundesupport på",
   "settings.aboutKiloCode.resetSettings.title": "Nulstil indstillinger",
   "settings.aboutKiloCode.resetSettings.description":
-    "Nulstil alle Kilo Code-udvidelsesindstillinger til standardværdierne. Dette påvirker ikke CLI- eller backend-konfiguration.",
+    "Nulstil alle kilocode---udvidelsesindstillinger til standardværdierne. Dette påvirker ikke CLI- eller backend-konfiguration.",
   "settings.aboutKiloCode.resetSettings.button": "Nulstil alle indstillinger",
 
   "settings.agentBehaviour.subtab.modes": "Tilstande",
@@ -980,7 +978,7 @@ export const dict = {
   "settings.browser.headless.title": "Headless-tilstand",
   "settings.browser.headless.description": "Kør i headless-tilstand (intet synligt browservindue).",
 
-  "settings.language.description": 'Vælg sproget til Kilo Code-brugerfladen. "Auto" bruger VS Codes visningssprog.',
+  "settings.language.description": 'Vælg sproget til kilocode---brugerfladen. "Auto" bruger VS Codes visningssprog.',
   "settings.language.auto": "Auto (VS Code-sprog)",
   "settings.language.current": "Nuværende:",
 
@@ -1203,10 +1201,10 @@ export const dict = {
   "settings.legacyMigration.link": "Migrer fra legacy-version",
   "settings.aboutKiloCode.legacyMigration.title": "Legacy-migrering",
   "settings.aboutKiloCode.legacyMigration.description":
-    "Migrer indstillinger fra en tidligere installation af Kilo Code, herunder udbyder API-nøgler og standardmodel.",
+    "Migrer indstillinger fra en tidligere installation af kilocode--, herunder udbyder API-nøgler og standardmodel.",
 
   // Screen 1 — What's New
-  "migration.whatsNew.title": "Nyheder i Kilo Code",
+  "migration.whatsNew.title": "Nyheder i kilocode--",
   "migration.whatsNew.badge": "Beta",
   "migration.whatsNew.subtitle": "Vi har genopbygget udvidelsen på et hurtigere og mere effektivt fundament.",
   "migration.whatsNew.features.performance.title": "Hurtigere agentydelse",

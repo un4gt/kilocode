@@ -592,9 +592,6 @@ export const dict = {
   "sidebar.project.recentSessions": "Recent sessions",
   "sidebar.project.viewAllSessions": "View all sessions",
 
-  "app.name.desktop": "Kilo Desktop",
-
-  "settings.section.desktop": "Desktop",
   "settings.section.server": "Server",
   "settings.tab.general": "General",
   "settings.tab.shortcuts": "Shortcuts",
@@ -873,7 +870,7 @@ export const dict = {
   "deviceAuth.toast.codeCopied": "Code copied to clipboard",
   "deviceAuth.toast.errorCopied": "Error copied to clipboard",
   "deviceAuth.status.initiating": "Starting login...",
-  "deviceAuth.title": "Sign in to Kilo Code",
+  "deviceAuth.title": "Sign in to kilocode--",
   "deviceAuth.step1": "Step 1: Open this URL",
   "deviceAuth.action.copyUrl": "Copy URL",
   "deviceAuth.action.openBrowser": "Open Browser",
@@ -894,7 +891,7 @@ export const dict = {
 
   "profile.title": "Profile",
   "profile.notLoggedIn": "Not logged in",
-  "profile.action.login": "Login with Kilo Code",
+  "profile.action.login": "Login with kilocode--",
   "profile.balance.title": "Balance",
   "profile.balance.refresh": "Refresh balance",
   "profile.action.dashboard": "Dashboard",
@@ -913,11 +910,11 @@ export const dict = {
   "settings.prompts.title": "Prompts",
   "settings.experimental.title": "Experimental",
   "settings.language.title": "Language",
-  "settings.aboutKiloCode.title": "About Kilo Code",
+  "settings.aboutKiloCode.title": "About kilocode--",
 
   "session.messages.empty": "Start a conversation by typing a message below.",
   "session.messages.welcome":
-    "Kilo Code is an AI coding assistant. Ask it to build features, fix bugs, or explain your codebase.",
+    "kilocode-- is an AI coding assistant. Ask it to build features, fix bugs, or explain your codebase.",
   "session.messages.scrollToBottom": "Scroll to bottom",
   "session.status.writingResponse": "Writing response...",
   "session.status.retry": "Retrying…",
@@ -952,14 +949,14 @@ export const dict = {
   "settings.aboutKiloCode.port.label": "Port:",
   "settings.aboutKiloCode.versionInfo": "Version Information",
   "settings.aboutKiloCode.version.label": "Version:",
-  "settings.aboutKiloCode.extensionName": "Kilo Code Extension",
+  "settings.aboutKiloCode.extensionName": "kilocode-- Extension",
   "settings.aboutKiloCode.community": "Community & Support",
   "settings.aboutKiloCode.feedback.prefix": "If you have any questions or feedback, feel free to open an issue on",
   "settings.aboutKiloCode.feedback.or": "or",
   "settings.aboutKiloCode.support.prefix": "For billing or account questions, contact Customer Support at",
   "settings.aboutKiloCode.resetSettings.title": "Reset Settings",
   "settings.aboutKiloCode.resetSettings.description":
-    "Reset all Kilo Code extension settings to their default values. This does not affect CLI or backend configuration.",
+    "Reset all kilocode-- extension settings to their default values. This does not affect CLI or backend configuration.",
   "settings.aboutKiloCode.resetSettings.button": "Reset All Settings",
 
   "settings.agentBehaviour.subtab.modes": "Modes",
@@ -980,7 +977,7 @@ export const dict = {
   "settings.browser.headless.description": "Run in headless mode (no visible browser window).",
 
   "settings.language.description":
-    'Choose the language for the Kilo Code UI. "Auto" uses your VS Code display language.',
+    'Choose the language for the kilocode-- UI. "Auto" uses your VS Code display language.',
   "settings.language.auto": "Auto (VS Code language)",
   "settings.language.current": "Current:",
 
@@ -1217,10 +1214,10 @@ export const dict = {
   "settings.legacyMigration.link": "Migrate from Legacy Version",
   "settings.aboutKiloCode.legacyMigration.title": "Legacy Migration",
   "settings.aboutKiloCode.legacyMigration.description":
-    "Migrate settings from a previous installation of Kilo Code, including provider API keys and default model.",
+    "Migrate settings from a previous installation of kilocode--, including provider API keys and default model.",
 
   // Screen 1 — What's New
-  "migration.whatsNew.title": "What's New in Kilo Code",
+  "migration.whatsNew.title": "What's New in kilocode--",
   "migration.whatsNew.badge": "Beta",
   "migration.whatsNew.subtitle": "We've rebuilt the extension on a faster, more efficient foundation.",
   "migration.whatsNew.features.performance.title": "Faster Agent Performance",

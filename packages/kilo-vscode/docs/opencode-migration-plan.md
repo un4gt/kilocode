@@ -74,7 +74,7 @@ Open issues from the [GitHub project board](https://github.com/orgs/Kilo-Org/pro
 | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------- | -------- |
 | [File Attachments](features/file-attachments.md)                              | Add non-image file attachment via button, drag-and-drop, or file picker | P2       |
 | [Task Completion Notification](features/task-completion-notification.md)      | VS Code toast when task completes or awaits input while panel is hidden | P2       |
-| [Custom OpenAI-Compatible Provider UI](features/custom-openai-provider-ui.md) | Port `DialogCustomProvider` from `packages/app` to extension webview    | P1       |
+| [Custom OpenAI-Compatible Provider UI](features/custom-openai-provider-ui.md) | Recreate the legacy `DialogCustomProvider` flow in the extension webview | P1       |
 | [Remember Last Model Choice](features/remember-last-model.md)                 | Persist last-used model and pre-select it for new sessions              | P2       |
 | [Expandable MCP Tools](features/expandable-mcp-tools.md)                      | Make MCP tool rows expandable to show inputs/outputs like regular tools | P2       |
 | [Session Preview Improvements](features/session-preview-improvements.md)      | Evaluate showing first message snippet or improving title generation    | P2       |

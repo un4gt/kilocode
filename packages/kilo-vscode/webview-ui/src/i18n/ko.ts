@@ -588,8 +588,6 @@ export const dict = {
   "sidebar.project.recentSessions": "최근 세션",
   "sidebar.project.viewAllSessions": "모든 세션 보기",
 
-  "app.name.desktop": "Kilo Desktop",
-  "settings.section.desktop": "데스크톱",
   "settings.section.server": "서버",
   "settings.tab.general": "일반",
   "settings.tab.shortcuts": "단축키",
@@ -872,7 +870,7 @@ export const dict = {
   "deviceAuth.toast.codeCopied": "코드가 클립보드에 복사되었습니다",
   "deviceAuth.toast.errorCopied": "오류가 클립보드에 복사되었습니다",
   "deviceAuth.status.initiating": "로그인 시작 중...",
-  "deviceAuth.title": "Kilo Code에 로그인",
+  "deviceAuth.title": "kilocode--에 로그인",
   "deviceAuth.step1": "1단계: 이 URL을 여세요",
   "deviceAuth.action.copyUrl": "URL 복사",
   "deviceAuth.action.openBrowser": "브라우저 열기",
@@ -893,7 +891,7 @@ export const dict = {
 
   "profile.title": "프로필",
   "profile.notLoggedIn": "로그인하지 않음",
-  "profile.action.login": "Kilo Code로 로그인",
+  "profile.action.login": "kilocode--로 로그인",
   "profile.balance.title": "잔액",
   "profile.balance.refresh": "잔액 새로고침",
   "profile.action.dashboard": "대시보드",
@@ -912,11 +910,11 @@ export const dict = {
   "settings.prompts.title": "프롬프트",
   "settings.experimental.title": "실험적",
   "settings.language.title": "언어",
-  "settings.aboutKiloCode.title": "Kilo Code 정보",
+  "settings.aboutKiloCode.title": "kilocode-- 정보",
 
   "session.messages.empty": "아래에 메시지를 입력하여 대화를 시작하세요.",
   "session.messages.welcome":
-    "Kilo Code는 AI 코딩 어시스턴트입니다. 기능 구축, 버그 수정 또는 코드베이스 설명을 요청하세요.",
+    "kilocode--는 AI 코딩 어시스턴트입니다. 기능 구축, 버그 수정 또는 코드베이스 설명을 요청하세요.",
   "session.messages.scrollToBottom": "하단으로 스크롤",
   "session.status.writingResponse": "응답 작성 중...",
   "session.status.retry": "재시도 중…",
@@ -951,14 +949,14 @@ export const dict = {
   "settings.aboutKiloCode.port.label": "포트:",
   "settings.aboutKiloCode.versionInfo": "버전 정보",
   "settings.aboutKiloCode.version.label": "버전:",
-  "settings.aboutKiloCode.extensionName": "Kilo Code 확장 프로그램",
+  "settings.aboutKiloCode.extensionName": "kilocode-- 확장 프로그램",
   "settings.aboutKiloCode.community": "커뮤니티 및 지원",
   "settings.aboutKiloCode.feedback.prefix": "질문이나 피드백이 있으시면 다음에서 이슈를 열어주세요",
   "settings.aboutKiloCode.feedback.or": "또는",
   "settings.aboutKiloCode.support.prefix": "결제 또는 계정 관련 문의는 고객 지원팀에 문의하세요",
   "settings.aboutKiloCode.resetSettings.title": "설정 초기화",
   "settings.aboutKiloCode.resetSettings.description":
-    "Kilo Code 확장 프로그램의 모든 설정을 기본값으로 초기화합니다. CLI 또는 백엔드 구성에는 영향을 미치지 않습니다.",
+    "kilocode-- 확장 프로그램의 모든 설정을 기본값으로 초기화합니다. CLI 또는 백엔드 구성에는 영향을 미치지 않습니다.",
   "settings.aboutKiloCode.resetSettings.button": "모든 설정 초기화",
 
   "settings.agentBehaviour.subtab.modes": "모드",
@@ -977,7 +975,7 @@ export const dict = {
   "settings.browser.headless.title": "헤드리스 모드",
   "settings.browser.headless.description": "헤드리스 모드로 실행합니다 (브라우저 창이 표시되지 않음).",
 
-  "settings.language.description": 'Kilo Code UI의 언어를 선택하세요. "자동"은 VS Code 표시 언어를 사용합니다.',
+  "settings.language.description": 'kilocode-- UI의 언어를 선택하세요. "자동"은 VS Code 표시 언어를 사용합니다.',
   "settings.language.auto": "자동 (VS Code 언어)",
   "settings.language.current": "현재:",
 
@@ -1191,10 +1189,10 @@ export const dict = {
   "settings.legacyMigration.link": "레거시 버전에서 마이그레이션",
   "settings.aboutKiloCode.legacyMigration.title": "레거시 마이그레이션",
   "settings.aboutKiloCode.legacyMigration.description":
-    "공급자 API 키 및 기본 모델을 포함하여 이전 Kilo Code 설치에서 설정을 마이그레이션합니다.",
+    "공급자 API 키 및 기본 모델을 포함하여 이전 kilocode-- 설치에서 설정을 마이그레이션합니다.",
 
   // Screen 1 — What's New
-  "migration.whatsNew.title": "Kilo Code의 새로운 기능",
+  "migration.whatsNew.title": "kilocode--의 새로운 기능",
   "migration.whatsNew.badge": "Beta",
   "migration.whatsNew.subtitle": "더 빠르고 효율적인 기반 위에 확장 프로그램을 재구축했습니다.",
   "migration.whatsNew.features.performance.title": "더 빠른 에이전트 성능",

@@ -1,6 +1,6 @@
-# ACP (Agent Client Protocol) Implementation
+# ACP Implementation
 
-This directory contains a clean, protocol-compliant implementation of the [Agent Client Protocol](https://agentclientprotocol.com/) for opencode.
+This directory contains the bundled runtime's implementation of the [Agent Client Protocol](https://agentclientprotocol.com/).
 
 ## Architecture
 
@@ -21,7 +21,7 @@ The implementation follows a clean separation of concerns:
 
 - **`session.ts`** - Session state management
   - Creates and tracks ACP sessions
-  - Maps ACP sessions to internal opencode sessions
+  - Maps ACP sessions to internal runtime sessions
   - Maintains working directory context
   - Handles MCP server configurations
 
@@ -38,10 +38,10 @@ The implementation follows a clean separation of concerns:
 
 ```bash
 # Start the ACP server in the current directory
-opencode acp
+kilo acp
 
 # Start in a specific directory
-opencode acp --cwd /path/to/project
+kilo acp --cwd /path/to/project
 ```
 
 ### Question Tool Opt-In
@@ -49,7 +49,7 @@ opencode acp --cwd /path/to/project
 ACP excludes `QuestionTool` by default.
 
 ```bash
-OPENCODE_ENABLE_QUESTION_TOOL=1 opencode acp
+OPENCODE_ENABLE_QUESTION_TOOL=1 kilo acp
 ```
 
 Enable this only for ACP clients that support interactive question prompts.
@@ -60,21 +60,6 @@ Enable this only for ACP clients that support interactive question prompts.
 import { ACPServer } from "./acp/server"
 
 await ACPServer.start()
-```
-
-### Integration with Zed
-
-Add to your Zed configuration (`~/.config/zed/settings.json`):
-
-```json
-{
-  "agent_servers": {
-    "OpenCode": {
-      "command": "opencode",
-      "args": ["acp"]
-    }
-  }
-}
 ```
 
 ## Protocol Compliance
@@ -124,7 +109,7 @@ This implementation follows the ACP specification v1:
 - **Session Persistence**: Save and restore full conversation history
 - **Mode Support**: Implement different operational modes (ask, code, etc.)
 - **Enhanced Permissions**: More sophisticated permission handling
-- **Terminal Integration**: Full terminal support via opencode's bash tool
+- **Terminal Integration**: Full terminal support via the runtime's bash tool
 
 ## Testing
 
@@ -133,7 +118,7 @@ This implementation follows the ACP specification v1:
 bun test test/acp.test.ts
 
 # Test manually with stdio
-echo '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":1}}' | opencode acp
+echo '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":1}}' | kilo acp
 ```
 
 ## Design Decisions
@@ -158,12 +143,12 @@ Each component has a single responsibility:
 
 This makes the codebase maintainable and testable.
 
-### Mapping to OpenCode
+### Mapping to The Runtime
 
-ACP sessions map cleanly to opencode's internal session model:
+ACP sessions map cleanly to the internal session model:
 
-- ACP `session/new` → creates internal Session
-- ACP `session/prompt` → uses SessionPrompt.prompt()
+- ACP `session/new` → creates an internal Session
+- ACP `session/prompt` → uses `SessionPrompt.prompt()`
 - Working directory context preserved per-session
 - Tool execution uses existing ToolRegistry
 
