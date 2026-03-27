@@ -1,118 +1,47 @@
-<p align="center">
-  <a href="https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code"><img src="https://img.shields.io/badge/VS_Code_Marketplace-007ACC?style=flat&logo=visualstudiocode&logoColor=white" alt="VS Code Marketplace"></a>
-  <a href="https://x.com/kilocode"><img src="https://img.shields.io/badge/kilocode-000000?style=flat&logo=x&logoColor=white" alt="X (Twitter)"></a>
-  <a href="https://blog.kilo.ai"><img src="https://img.shields.io/badge/Blog-555?style=flat&logo=substack&logoColor=white" alt="Substack Blog"></a>
-  <a href="https://kilo.ai/discord"><img src="https://img.shields.io/badge/Join%20Discord-5865F2?style=flat&logo=discord&logoColor=white" alt="Discord"></a>
-  <a href="https://www.reddit.com/r/kilocode/"><img src="https://img.shields.io/badge/Join%20r%2Fkilocode-D84315?style=flat&logo=reddit&logoColor=white" alt="Reddit"></a>
-</p>
+# kilocode-- (kilocode lite)
 
-# 🚀 Kilo
+`kilocode-- (kilocode lite)` is a trimmed fork of Kilo Code focused on a single deliverable: the VS Code extension.
 
-> Kilo is the all-in-one agentic engineering platform. Build, ship, and iterate faster with the most popular open source coding agent.
-> [#1 coding agent on OpenRouter](https://openrouter.ai/apps/category/coding). 1.5M+ Kilo Coders. 25T+ tokens processed
+This repository keeps the extension, its internal runtime, and the shared packages required to build and test that stack. Standalone desktop, web, docs, container, Zed, and auxiliary SDK packaging surfaces have been removed on purpose.
 
-- ✨ Generate code from natural language
-- ✅ Checks its own work
-- 🧪 Run terminal commands
-- 🌐 Automate the browser
-- ⚡ Inline autocomplete suggestions
-- 🤖 Latest AI models
-- 🎁 API keys optional
-- 💡 **Get $20 in bonus credits when you top-up for the first time** Credits can be used with 500+ models like Gemini 3.1 Pro, Claude 4.6 Sonnet & Opus, and GPT-5.2
+## What stays in this repo
 
-## Quick Links
+- `packages/kilo-vscode` - the VS Code extension
+- `packages/opencode` - the internal runtime the extension launches
+- `packages/sdk/js` - generated client types shared by the extension and runtime
+- `packages/kilo-ui`, `packages/ui`, `packages/kilo-i18n` - extension UI and localization packages
+- `packages/kilo-gateway`, `packages/kilo-telemetry`, `packages/plugin`, `packages/util`, `packages/script` - runtime support packages
 
-- [VS Code Marketplace](https://kilo.ai/vscode-marketplace?utm_source=Readme) (download)
-- Install CLI: `npm install -g @kilocode/cli`
-- [Official Kilo.ai Home page](https://kilo.ai) (learn more)
+## Install
 
-## Key Features
+- Marketplace: https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code
+- Releases: https://github.com/Kilo-Org/kilocode/releases
 
-- **Code Generation:** Kilo can generate code using natural language.
-- **Inline Autocomplete:** Get intelligent code completions as you type, powered by AI.
-- **Task Automation:** Kilo can automate repetitive coding tasks to save time.
-- **Automated Refactoring:** Kilo can refactor and improve existing code efficiently.
-- **MCP Server Marketplace**: Kilo can easily find, and use MCP servers to extend the agent capabilities.
-- **Multi Mode**: Plan with Architect, Code with Coder, and Debug with Debugger, and make your own custom modes.
+The marketplace item keeps the existing extension identifier for compatibility, while the user-facing name is `kilocode-- (kilocode lite)`.
 
-## Get Started in Visual Studio Code
-
-1. Install the Kilo Code extension from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code).
-2. Create your account to access 500+ cutting-edge AI models including Gemini 3 Pro, Claude 4.5 Sonnet & Opus, and GPT-5 – with transparent pricing that matches provider rates exactly.
-3. Start coding with AI that adapts to your workflow. Watch our quick-start guide to see Kilo in action:
-
-[![Watch the video](https://img.youtube.com/vi/pqGfYXgrhig/maxresdefault.jpg)](https://youtu.be/pqGfYXgrhig)
-
-## Get Started with the CLI
+## Local Development
 
 ```bash
-# npm
-npm install -g @kilocode/cli
-
-# Or run directly with npx
-npx @kilocode/cli
+bun install
+bun run extension
 ```
 
-Then run `kilo` in any project directory to start.
+Useful commands:
 
-<!-- kilocode_change start -->
+- `bun turbo typecheck`
+- `bun run extension`
+- `bun run --cwd packages/kilo-vscode compile`
+- `bun run --cwd packages/kilo-vscode test:unit`
 
-### npm Install Note: Hidden `.kilo` File
+## Release Outputs
 
-On some systems and npm versions, installing `@kilocode/cli` can create a hidden `.kilo` file near the installed `kilo` command (for example in a global npm bin directory). This file is an npm-generated launcher helper, not project data.
+The release workflow builds:
 
-- Why it exists: npm may create helper artifacts while wiring CLI executables.
-- Size caveat: size can vary by platform, npm version, and install mode (symlink vs copied launcher), so a strict fixed size is not guaranteed.
-- Safety: it is safe to leave in place. Do not edit it manually. Use your package manager's uninstall (`npm uninstall -g @kilocode/cli`) to remove install artifacts cleanly.
-<!-- kilocode_change end -->
+- pre-release VSIX packages
+- stable VSIX packages for Open VSX and GitHub Releases
 
-### Install from GitHub Releases (Optional)
-
-Download the latest binary or source code from the [Releases page](https://github.com/Kilo-Org/kilocode/releases), use this quick guide:
-
-- `kilo-<os>-<arch>.zip` is the CLI binary for your OS and CPU architecture on Windows and macOS. (`kilo-linux-<arch>.tar.gz` for Linux)
-- `darwin` means macOS.
-- `x64` is standard 64-bit Intel/AMD CPUs.
-- `x64-baseline` is a compatibility build for older x64 CPUs(do not support AVX Instruction).
-- `arm64` is ARM-based Linux/MacOS.
-- `musl` is statically linked Linux build for Alpine/minimal Docker without glibc. Alpine/minimal Docker users should prefer the matching \*-musl asset.
-- `kilo-vscode-*.vsix` is the VS Code extension package and not the CLI binary.
-- `Source code` releases are for building from source, not normal installation.
-
-For most users:
-
-- **Windows (most PCs):** `kilo-windows-x64.zip`
-- **macOS Apple Silicon:** `kilo-darwin-arm64.zip`
-- **macOS Intel:** `kilo-darwin-x64.zip`
-- **Linux x64:** `kilo-linux-x64.tar,gz`
-- **Linux on ARM:** `kilo-linux-arm64.tar.gz`
-
-### Autonomous Mode (CI/CD)
-
-Use the `--auto` flag with `kilo run` to enable fully autonomous operation without user interaction. This is ideal for CI/CD pipelines and automated workflows:
-
-```bash
-kilo run --auto "run tests and fix any failures"
-```
-
-**Important:** The `--auto` flag disables all permission prompts and allows the agent to execute any action without confirmation. Only use this in trusted environments like CI/CD pipelines.
-
-## Contributing
-
-We welcome contributions from developers, writers, and enthusiasts!
-To get started, please read our [Contributing Guide](/CONTRIBUTING.md). It includes details on setting up your environment, coding standards, types of contribution and how to submit pull requests.
-
-See [RELEASING.md](RELEASING.md) for the release process.
-
-## Code of Conduct
-
-Our community is built on respect, inclusivity, and collaboration. Please review our [Code of Conduct](/CODE_OF_CONDUCT.md) to understand the expectations for all contributors and community members.
+VSIX files are emitted as `kilocode-lite-<target>.vsix`.
 
 ## License
 
-This project is licensed under the MIT License.
-You’re free to use, modify, and distribute this code, including for commercial purposes as long as you include proper attribution and license notices. See [License](/LICENSE).
-
-### Where did Kilo CLI come from?
-
-Kilo CLI is a fork of [OpenCode](https://github.com/anomalyco/opencode), enhanced to work within the Kilo agentic engineering platform.
+The project remains under the MIT License. See [LICENSE](/LICENSE).

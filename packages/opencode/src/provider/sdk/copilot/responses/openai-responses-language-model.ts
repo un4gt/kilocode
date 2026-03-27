@@ -193,11 +193,19 @@ export class OpenAIResponsesLanguageModel implements LanguageModelV2 {
       warnings.push({ type: "unsupported-setting", setting: "stopSequences" })
     }
 
-    const openaiOptions = await parseProviderOptions({
-      provider: "copilot",
-      providerOptions,
-      schema: openaiResponsesProviderOptionsSchema,
-    })
+    const providerOptionsName = this.config.provider.split(".")[0].trim()
+    const openaiOptions = Object.assign(
+      (await parseProviderOptions({
+        provider: "copilot",
+        providerOptions,
+        schema: openaiResponsesProviderOptionsSchema,
+      })) ?? {},
+      (await parseProviderOptions({
+        provider: providerOptionsName,
+        providerOptions,
+        schema: openaiResponsesProviderOptionsSchema,
+      })) ?? {},
+    )
 
     const { input, warnings: inputWarnings } = await convertToOpenAIResponsesInput({
       prompt,

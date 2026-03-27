@@ -1,4 +1,4 @@
-# Contributing to Kilo CLI
+# Contributing to kilocode-- (kilocode lite)
 
 See [the Documentation for details on contributing](https://kilo.ai/docs/contributing).
 
@@ -14,14 +14,14 @@ There are lots of ways to contribute to the project:
 
 The Kilo Community is [on Discord](https://kilo.ai/discord).
 
-## Developing Kilo CLI
+## Developing the VS Code Extension
 
 - **Requirements:** Bun 1.3.10+
-- Install dependencies and start the dev server from the repo root:
+- Install dependencies and launch the extension from the repo root:
 
   ```bash
   bun install
-  bun dev
+  bun run extension
   ```
 
 ### Developing the VS Code Extension
@@ -34,61 +34,21 @@ bun run extension        # Build + launch in dev mode
 
 This auto-detects VS Code on macOS, Linux, and Windows. Override with `--app-path PATH` or `VSCODE_EXEC_PATH`. Use `--insiders` to prefer Insiders, `--workspace PATH` to open a specific folder, or `--clean` to reset cached state.
 
-### Running against a different directory
+### Internal runtime
 
-By default, `bun dev` runs Kilo CLI in the `packages/opencode` directory. To run it against a different directory or repository:
+The extension still launches an internal local runtime from `packages/opencode/`, but that runtime is not treated as a standalone end-user product in this trimmed repository.
 
-```bash
-bun dev <directory>
-```
-
-To run Kilo CLI in the root of the repo itself:
-
-```bash
-bun dev .
-```
-
-### Building a "local" binary
-
-To compile a standalone executable:
-
-```bash
-./packages/opencode/script/build.ts --single
-```
-
-Then run it with:
-
-```bash
-./packages/opencode/dist/@kilocode/cli-<platform>/bin/kilo
-```
-
-Replace `<platform>` with your platform (e.g., `darwin-arm64`, `linux-x64`).
-
-### Understanding bun dev vs kilo
-
-During development, `bun dev` is the local equivalent of the built `kilo` command. Both run the same CLI interface:
-
-```bash
-# Development (from project root)
-bun dev --help           # Show all available commands
-bun dev serve            # Start headless API server
-bun dev web              # Start server + open web interface
-
-# Production
-kilo --help          # Show all available commands
-kilo serve           # Start headless API server
-kilo web             # Start server + open web interface
-```
+If you need to work on the runtime code that backs the extension, use the package-local commands there directly.
 
 ### Testing with a local backend
 
-To point the CLI at a local backend (e.g., a locally running Kilo API server on port 3000), set the `KILO_API_URL` environment variable:
+To point the extension-backed runtime at a local backend (for example a Kilo API server on port 3000), set `KILO_API_URL` before launching the extension:
 
 ```bash
-KILO_API_URL=http://localhost:3000 bun dev
+KILO_API_URL=http://localhost:3000 bun run extension
 ```
 
-This redirects all gateway traffic (auth, model listing, provider routing, profile, etc.) to your local server. The default is `https://api.kilo.ai`.
+This redirects gateway traffic such as auth, model listing, provider routing, and profile calls to your local server. The default is `https://api.kilo.ai`.
 
 There are also optional overrides for other services:
 
