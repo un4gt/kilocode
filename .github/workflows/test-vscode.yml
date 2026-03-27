@@ -2,17 +2,37 @@ name: test-vscode
 
 on:
   push:
-    branches:
-      - dev
     paths:
       - "packages/kilo-vscode/**"
+      - "packages/opencode/**"
+      - "packages/sdk/js/**"
+      - "packages/plugin/**"
       - "packages/ui/**"
       - "packages/kilo-ui/**"
+      - "packages/kilo-i18n/**"
+      - "packages/kilo-gateway/**"
+      - "packages/kilo-telemetry/**"
+      - "packages/util/**"
+      - "package.json"
+      - "bun.lock"
+      - "turbo.json"
+      - ".github/workflows/test-vscode.yml"
   pull_request:
     paths:
       - "packages/kilo-vscode/**"
+      - "packages/opencode/**"
+      - "packages/sdk/js/**"
+      - "packages/plugin/**"
       - "packages/ui/**"
       - "packages/kilo-ui/**"
+      - "packages/kilo-i18n/**"
+      - "packages/kilo-gateway/**"
+      - "packages/kilo-telemetry/**"
+      - "packages/util/**"
+      - "package.json"
+      - "bun.lock"
+      - "turbo.json"
+      - ".github/workflows/test-vscode.yml"
   workflow_dispatch:
 
 jobs:

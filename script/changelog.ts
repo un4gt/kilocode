@@ -53,7 +53,7 @@ export async function getCommits(from: string, to: string): Promise<Commit[]> {
 
   // Get commits that touch the relevant packages
   const log =
-    await $`git log ${fromRef}..${toRef} --oneline --format="%H" -- packages/opencode packages/sdk packages/plugin packages/desktop packages/app sdks/vscode packages/extensions github`.text()
+    await $`git log ${fromRef}..${toRef} --oneline --format="%H" -- packages/opencode packages/sdk packages/plugin packages/kilo-vscode packages/kilo-ui packages/ui packages/kilo-i18n packages/kilo-gateway packages/kilo-telemetry packages/util`.text()
   const hashes = log.split("\n").filter(Boolean)
 
   const commits: Commit[] = []
@@ -68,16 +68,17 @@ export async function getCommits(from: string, to: string): Promise<Commit[]> {
     const areas = new Set<string>()
 
     for (const file of files.split("\n").filter(Boolean)) {
-      if (file.startsWith("packages/opencode/src/cli/cmd/")) areas.add("tui")
-      else if (file.startsWith("packages/opencode/")) areas.add("core")
-      else if (file.startsWith("packages/desktop/src-tauri/")) areas.add("tauri")
-      else if (file.startsWith("packages/desktop/")) areas.add("app")
-      else if (file.startsWith("packages/app/")) areas.add("app")
+      if (file.startsWith("packages/kilo-vscode/")) areas.add("extension")
+      else if (file.startsWith("packages/kilo-ui/")) areas.add("extension")
+      else if (file.startsWith("packages/ui/")) areas.add("extension")
+      else if (file.startsWith("packages/kilo-i18n/")) areas.add("extension")
+      else if (file.startsWith("packages/opencode/src/cli/cmd/")) areas.add("runtime")
+      else if (file.startsWith("packages/opencode/")) areas.add("runtime")
+      else if (file.startsWith("packages/kilo-gateway/")) areas.add("runtime")
+      else if (file.startsWith("packages/kilo-telemetry/")) areas.add("runtime")
+      else if (file.startsWith("packages/util/")) areas.add("runtime")
       else if (file.startsWith("packages/sdk/")) areas.add("sdk")
-      else if (file.startsWith("packages/plugin/")) areas.add("plugin")
-      else if (file.startsWith("packages/extensions/")) areas.add("extensions/zed")
-      else if (file.startsWith("sdks/vscode/")) areas.add("extensions/vscode")
-      else if (file.startsWith("github/")) areas.add("github")
+      else if (file.startsWith("packages/plugin/")) areas.add("sdk")
     }
 
     if (areas.size === 0) continue
@@ -116,24 +117,18 @@ function filterRevertedCommits(commits: Commit[]): Commit[] {
 }
 
 const sections = {
-  core: "Core",
-  tui: "TUI",
-  app: "Desktop",
-  tauri: "Desktop",
+  extension: "Extension",
+  runtime: "CLI Runtime",
   sdk: "SDK",
-  plugin: "SDK",
-  "extensions/zed": "Extensions",
-  "extensions/vscode": "Extensions",
-  github: "Extensions",
 } as const
 
 function getSection(areas: Set<string>): string {
   // Priority order for multi-area commits
-  const priority = ["core", "tui", "app", "tauri", "sdk", "plugin", "extensions/zed", "extensions/vscode", "github"]
+  const priority = ["extension", "runtime", "sdk"]
   for (const area of priority) {
     if (areas.has(area)) return sections[area as keyof typeof sections]
   }
-  return "Core"
+  return "CLI Runtime"
 }
 
 async function summarizeCommit(opencode: Awaited<ReturnType<typeof createKilo>>, message: string): Promise<string> {
@@ -185,7 +180,7 @@ export async function generateChangelog(commits: Commit[], opencode: Awaited<Ret
     grouped.get(section)!.push(entry)
   }
 
-  const sectionOrder = ["Core", "TUI", "Desktop", "SDK", "Extensions"]
+  const sectionOrder = ["Extension", "CLI Runtime", "SDK"]
   const lines: string[] = []
   for (const section of sectionOrder) {
     const entries = grouped.get(section)
