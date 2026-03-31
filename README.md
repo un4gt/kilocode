@@ -14,10 +14,10 @@ This repository keeps the extension, its internal runtime, and the shared packag
 
 ## Install
 
-- Marketplace: https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code
-- Releases: https://github.com/Kilo-Org/kilocode/releases
+- VSIX (this fork): https://github.com/un4gt/kilocode/releases
+- Marketplace (upstream / official): https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code
 
-The marketplace item keeps the existing extension identifier for compatibility, while the user-facing name is `kilocode-- (kilocode lite)`.
+This fork uses its own VS Code extension identifier (`publisher`: `un4gt`, `name`: `kilocode-lite`) so it can be installed alongside upstream without collisions.
 
 ## Local Development
 
@@ -37,11 +37,16 @@ Useful commands:
 
 The release workflow builds:
 
-- pre-release VSIX packages
-- stable VSIX packages for Open VSX and GitHub Releases
+- VSIX packages uploaded to GitHub Releases
 
 VSIX files are emitted as `kilocode-lite-<target>.vsix`.
 
 ## License
 
 The project remains under the MIT License. See [LICENSE](/LICENSE).
+
+## Acknowledgements
+
+This project is based on the MIT-licensed Kilo Code codebase and retains upstream license notices. Thanks to the original Kilo Code / OpenCode authors and contributors.
+
+- Upstream repository: https://github.com/Kilo-Org/kilocode

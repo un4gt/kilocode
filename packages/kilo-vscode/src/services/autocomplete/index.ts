@@ -12,33 +12,33 @@ export const registerAutocompleteProvider = (
 
   // Register AutocompleteServiceManager Commands
   context.subscriptions.push(
-    vscode.commands.registerCommand("kilo-code.new.autocomplete.reload", async () => {
+    vscode.commands.registerCommand("kilocode-lite.new.autocomplete.reload", async () => {
       await autocompleteManager.load()
     }),
   )
   context.subscriptions.push(
-    vscode.commands.registerCommand("kilo-code.new.autocomplete.codeActionQuickFix", async () => {
+    vscode.commands.registerCommand("kilocode-lite.new.autocomplete.codeActionQuickFix", async () => {
       return
     }),
   )
   context.subscriptions.push(
-    vscode.commands.registerCommand("kilo-code.new.autocomplete.cancelSuggestions", () => {
+    vscode.commands.registerCommand("kilocode-lite.new.autocomplete.cancelSuggestions", () => {
       vscode.commands.executeCommand("editor.action.inlineSuggest.hide")
-      vscode.commands.executeCommand("setContext", "kilo-code.new.autocomplete.hasSuggestions", false)
+      vscode.commands.executeCommand("setContext", "kilocode-lite.new.autocomplete.hasSuggestions", false)
     }),
   )
   context.subscriptions.push(
-    vscode.commands.registerCommand("kilo-code.new.autocomplete.generateSuggestions", async () => {
+    vscode.commands.registerCommand("kilocode-lite.new.autocomplete.generateSuggestions", async () => {
       autocompleteManager.codeSuggestion()
     }),
   )
   context.subscriptions.push(
-    vscode.commands.registerCommand("kilo-code.new.autocomplete.showIncompatibilityExtensionPopup", async () => {
+    vscode.commands.registerCommand("kilocode-lite.new.autocomplete.showIncompatibilityExtensionPopup", async () => {
       await autocompleteManager.showIncompatibilityExtensionPopup()
     }),
   )
   context.subscriptions.push(
-    vscode.commands.registerCommand("kilo-code.new.autocomplete.disable", async () => {
+    vscode.commands.registerCommand("kilocode-lite.new.autocomplete.disable", async () => {
       await autocompleteManager.disable()
     }),
   )
@@ -54,7 +54,7 @@ export const registerAutocompleteProvider = (
   // Also ensure the CLI backend is running when autocomplete gets enabled.
   context.subscriptions.push(
     vscode.workspace.onDidChangeConfiguration((e) => {
-      if (e.affectsConfiguration("kilo-code.new.autocomplete")) {
+      if (e.affectsConfiguration("kilocode-lite.new.autocomplete")) {
         ensureBackendForAutocomplete(connectionService)
         void autocompleteManager.load()
       }

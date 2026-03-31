@@ -47,9 +47,9 @@ describe("KiloCodeActionProvider", () => {
       it("uses correct command IDs", () => {
         const result = provider.provideCodeActions({} as never, makeRange(false) as never, makeContext(0) as never)
         const commands = result.map((a) => a.command?.command)
-        expect(commands).toContain("kilo-code.new.addToContext")
-        expect(commands).toContain("kilo-code.new.explainCode")
-        expect(commands).toContain("kilo-code.new.improveCode")
+        expect(commands).toContain("kilocode-lite.new.addToContext")
+        expect(commands).toContain("kilocode-lite.new.explainCode")
+        expect(commands).toContain("kilocode-lite.new.improveCode")
       })
 
       it("no action is preferred", () => {
@@ -93,7 +93,7 @@ describe("KiloCodeActionProvider", () => {
       it("uses correct Fix command ID", () => {
         const result = provider.provideCodeActions({} as never, makeRange(false) as never, makeContext(1) as never)
         const fix = result.find((a) => a.title === "Fix with kilocode--")
-        expect(fix?.command?.command).toBe("kilo-code.new.fixCode")
+        expect(fix?.command?.command).toBe("kilocode-lite.new.fixCode")
       })
     })
   })

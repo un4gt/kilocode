@@ -23,53 +23,46 @@ permissions:
   contents: write
 
 jobs:
-  version:
+  build-vscode:
     runs-on: blacksmith-4vcpu-ubuntu-2404
-    if: github.repository == 'Kilo-Org/kilocode'
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - uses: ./.github/actions/setup-bun
-
-      - id: version
-        run: ./script/version.ts
-        env:
-          GH_TOKEN: ${{ github.token }}
-          GH_REPO: ${{ github.repository }}
-          KILO_BUMP: ${{ inputs.bump }}
-          KILO_VERSION: ${{ inputs.version }}
-          KILO_API_KEY: ${{ secrets.KILO_API_KEY }}
-          KILO_ORG_ID: ${{ secrets.KILO_ORG_ID }}
     outputs:
       version: ${{ steps.version.outputs.version }}
-      release: ${{ steps.version.outputs.release }}
-      tag: ${{ steps.version.outputs.tag }}
-
-  build-vscode:
-    needs: version
-    runs-on: blacksmith-4vcpu-ubuntu-2404
-    if: github.repository == 'Kilo-Org/kilocode'
     steps:
       - uses: actions/checkout@v4
-
-      - uses: ./.github/actions/setup-bun
 
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
           registry-url: "https://registry.npmjs.org"
 
+      - uses: ./.github/actions/setup-bun
+
+      - name: Compute version
+        id: version
+        run: bun ./script/compute-version.ts
+        env:
+          KILO_BUMP: ${{ inputs.bump }}
+          KILO_VERSION: ${{ inputs.version }}
+          GH_REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ github.token }}
+
       - name: Install @vscode/vsce
         run: bun install -g @vscode/vsce
+
+      - name: Build CLI binaries
+        run: bun script/build.ts
+        working-directory: ./packages/opencode
+        env:
+          KILO_VERSION: ${{ steps.version.outputs.version }}
+          GH_REPO: ${{ github.repository }}
 
       - name: Build VSIX packages
         run: bun script/build.ts
         working-directory: ./packages/kilo-vscode
         env:
-          KILO_VERSION: ${{ needs.version.outputs.version }}
+          KILO_VERSION: ${{ steps.version.outputs.version }}
           GH_REPO: ${{ github.repository }}
+          KILO_REQUIRE_ALL_TARGETS: "1"
 
       - uses: actions/upload-artifact@v4
         with:
@@ -77,42 +70,27 @@ jobs:
           path: packages/kilo-vscode/out
 
   publish:
-    needs:
-      - version
-      - build-vscode
+    needs: build-vscode
     runs-on: blacksmith-4vcpu-ubuntu-2404
-    if: github.repository == 'Kilo-Org/kilocode'
     steps:
       - uses: actions/checkout@v4
-
-      - uses: ./.github/actions/setup-bun
 
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
           registry-url: "https://registry.npmjs.org"
 
-      - name: Install @vscode/vsce
-        run: bun install -g @vscode/vsce
-
-      - name: Setup Git Committer
-        id: committer
-        uses: ./.github/actions/setup-git-committer
-        with:
-          kilo-maintainer-app-id: ${{ secrets.KILO_MAINTAINER_APP_ID }}
-          kilo-maintainer-app-secret: ${{ secrets.KILO_MAINTAINER_APP_SECRET }}
+      - uses: ./.github/actions/setup-bun
 
       - uses: actions/download-artifact@v4
         with:
           name: kilocode-lite-vsix
           path: packages/kilo-vscode/out
 
-      - name: Publish release
-        run: ./script/publish.ts
+      - name: Publish GitHub release (VSIX only)
+        run: bun ./script/publish-vsix.ts
         env:
-          KILO_VERSION: ${{ needs.version.outputs.version }}
-          KILO_RELEASE: ${{ needs.version.outputs.release }}
+          KILO_BUMP: ${{ inputs.bump }}
+          KILO_VERSION: ${{ needs.build-vscode.outputs.version }}
           GH_REPO: ${{ github.repository }}
-          GITHUB_TOKEN: ${{ steps.committer.outputs.token }}
-          VSCE_PAT: ${{ secrets.VSCE_TOKEN }}
-          OPENVSX_TOKEN: ${{ secrets.OVSX_TOKEN }}
+          GH_TOKEN: ${{ github.token }}

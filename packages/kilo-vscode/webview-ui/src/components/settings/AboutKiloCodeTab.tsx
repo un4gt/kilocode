@@ -101,7 +101,7 @@ const AboutKiloCodeTab: Component<AboutKiloCodeTabProps> = (props) => {
           }}
         >
           {language.t("settings.aboutKiloCode.feedback.prefix")}{" "}
-          <span style={linkStyle} onClick={() => open("https://github.com/Kilo-Org/kilocode")}>
+          <span style={linkStyle} onClick={() => open("https://github.com/un4gt/kilocode")}>
             GitHub
           </span>
           ,{" "}

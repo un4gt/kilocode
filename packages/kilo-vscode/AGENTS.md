@@ -62,8 +62,8 @@ Use `@kilocode/kilo-ui` components for new webview work.
 
 ## Naming
 
-- Commands must keep the `kilo-code.new.` prefix unless a migration explicitly changes it
-- Keep the sidebar view ID `kilo-code.SidebarProvider` for compatibility
+- Commands must keep the `kilocode-lite.new.` prefix
+- Keep the sidebar view ID `kilocode-lite.SidebarProvider`
 
 ## Style
 

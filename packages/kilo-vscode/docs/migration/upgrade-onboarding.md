@@ -12,4 +12,4 @@
   - Shows what settings have been migrated and what hasn't
   - Links to documentation on what changed
 - Do not show generic "new user" welcome screen to upgraders
-- Store `kilo-code.new.upgradeOnboardingShown` flag in `globalState`
+- Store `kilocode-lite.new.upgradeOnboardingShown` flag in `globalState`

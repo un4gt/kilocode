@@ -1,6 +1,11 @@
 # Contributing to kilocode-- (kilocode lite)
 
-See [the Documentation for details on contributing](https://kilo.ai/docs/contributing).
+This repository is a community-maintained fork of Kilo Code. Please use this repo’s GitHub issues and pull requests for bug reports and contributions:
+
+- Issues: https://github.com/un4gt/kilocode/issues
+- Pull requests: https://github.com/un4gt/kilocode/pulls
+
+For the upstream project, see https://github.com/Kilo-Org/kilocode.
 
 ## TL;DR
 
@@ -12,7 +17,7 @@ There are lots of ways to contribute to the project:
 - **Feature Requests:** Suggest new features or improvements
 - **Community Support:** Help other users in the community
 
-The Kilo Community is [on Discord](https://kilo.ai/discord).
+Upstream Kilo Code community resources are available at https://kilo.ai/discord.
 
 ## Developing the VS Code Extension
 
@@ -48,7 +53,7 @@ To point the extension-backed runtime at a local backend (for example a Kilo API
 KILO_API_URL=http://localhost:3000 bun run extension
 ```
 
-This redirects gateway traffic such as auth, model listing, provider routing, and profile calls to your local server. The default is `https://api.kilo.ai`.
+This redirects gateway traffic such as auth, model listing, provider routing, and profile calls to your local server. The default is `https://api.kilo.ai` (an upstream service, not operated by this fork).
 
 There are also optional overrides for other services:
 

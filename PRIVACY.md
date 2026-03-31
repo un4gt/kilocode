@@ -1,15 +1,16 @@
-# Kilo CLI Privacy Policy
+# kilocode-- (kilocode lite) Privacy Notes
 
-**Last Updated: March 7th, 2025**
+**Last Updated: March 31, 2026**
 
-Kilo CLI respects your privacy and is committed to transparency about how we handle your data. Below is a simple breakdown of where key pieces of data go—and, importantly, where they don't.
+This repository is a community-maintained fork. The software runs locally and is committed to transparency about where data may be sent.
 
 ### **Where Your Data Goes (And Where It Doesn't)**
 
-- **Code & Files**: Kilo CLI accesses files on your local machine when needed for AI-assisted features. When you send commands to Kilo CLI, relevant files may be transmitted to your chosen AI model provider (e.g., OpenAI, Anthropic, OpenRouter) to generate responses. We do not have access to this data, but AI providers may store it per their privacy policies.
-- **Commands**: Any commands executed through Kilo CLI happen on your local environment. However, when you use AI-powered features, the relevant code and context from your commands may be transmitted to your chosen AI model provider (e.g., OpenAI, Anthropic, OpenRouter) to generate responses. We do not have access to or store this data, but AI providers may process it per their privacy policies.
-- **Prompts & AI Requests**: When you use AI-powered features, your prompts and relevant project context are sent to your chosen AI model provider (e.g., OpenAI, Anthropic, OpenRouter) to generate responses. We do not store or process this data. These AI providers have their own privacy policies and may store data per their terms of service.
-- **API Keys & Credentials**: If you enter an API key (e.g., to connect an AI model), it is stored locally on your device and never sent to us or any third party, except the provider you have chosen.
+- **Code & Files**: The extension/runtime can access files on your local machine when needed for AI-assisted features. When you use an AI provider, relevant context may be sent to that provider (e.g., OpenAI, Anthropic, OpenRouter) to generate responses. AI providers may store or retain data per their policies.
+- **Commands**: Commands run on your local environment. If you use AI-powered features, command output and surrounding context may be sent to your configured AI provider.
+- **Prompts & AI Requests**: Prompts and relevant project context may be sent to your configured AI provider to generate responses.
+- **Upstream Kilo Services**: Some features may communicate with upstream Kilo endpoints by default (for example `https://api.kilo.ai`) unless you override them (see `KILO_API_URL` and related variables in `CONTRIBUTING.md`). Those services are not operated by this fork.
+- **API Keys & Credentials**: Provider credentials are stored locally on your device and only sent to the provider(s) you configure.
 
 ### **Your Choices & Control**
 
@@ -21,8 +22,10 @@ We take reasonable measures to secure your data, but no system is 100% secure. I
 
 ### **Contact Us**
 
-For any privacy-related questions, you can reach out to us at hi@kilo.ai.
+For privacy-related questions about this fork, please open an issue:
+
+- https://github.com/un4gt/kilocode/issues
 
 ---
 
-By using Kilo CLI, you agree to this Privacy Policy.
+By using the software, you acknowledge that network requests may be made to configured third-party services, and that your configured providers’ policies apply to any data you send them.

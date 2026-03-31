@@ -234,7 +234,7 @@ for (const item of targets) {
         // kilocode_change start
         repository: {
           type: "git",
-          url: "https://github.com/Kilo-Org/kilocode",
+          url: process.env.GH_REPO ? `https://github.com/${process.env.GH_REPO}` : "https://github.com/un4gt/kilocode",
         },
         // kilocode_change end
       },

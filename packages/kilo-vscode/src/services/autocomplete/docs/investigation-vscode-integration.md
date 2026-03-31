@@ -26,22 +26,22 @@ Commands declared in `src/package.json` `contributes.commands`:
 
 | Command ID                                       | Title Key                                        | Registered in Code?                        |
 | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------ |
-| `kilo-code.autocomplete.generateSuggestions`     | `%autocomplete.commands.generateSuggestions%`    | ✅ `src/services/autocomplete/index.ts:26` |
-| `kilo-code.autocomplete.cancelSuggestions`       | `%autocomplete.commands.cancelSuggestions%`      | ❌ Never registered — placeholder          |
-| `kilo-code.autocomplete.applyCurrentSuggestions` | `%autocomplete.commands.applyCurrentSuggestion%` | ❌ Never registered — placeholder          |
-| `kilo-code.autocomplete.applyAllSuggestions`     | `%autocomplete.commands.applyAllSuggestions%`    | ❌ Never registered — placeholder          |
-| `kilo-code.autocomplete.goToNextSuggestion`      | `%autocomplete.commands.goToNextSuggestion%`     | ❌ Never registered — placeholder          |
-| `kilo-code.autocomplete.goToPreviousSuggestion`  | `%autocomplete.commands.goToPreviousSuggestion%` | ❌ Never registered — placeholder          |
+| `kilocode-lite.new.autocomplete.generateSuggestions`     | `%autocomplete.commands.generateSuggestions%`    | ✅ `src/services/autocomplete/index.ts:26` |
+| `kilocode-lite.new.autocomplete.cancelSuggestions`       | `%autocomplete.commands.cancelSuggestions%`      | ✅ `src/services/autocomplete/index.ts:21` |
+| `kilocode-lite.new.autocomplete.applyCurrentSuggestions` | `%autocomplete.commands.applyCurrentSuggestion%` | ❌ Never registered — placeholder          |
+| `kilocode-lite.new.autocomplete.applyAllSuggestions`     | `%autocomplete.commands.applyAllSuggestions%`    | ❌ Never registered — placeholder          |
+| `kilocode-lite.new.autocomplete.goToNextSuggestion`      | `%autocomplete.commands.goToNextSuggestion%`     | ❌ Never registered — placeholder          |
+| `kilocode-lite.new.autocomplete.goToPreviousSuggestion`  | `%autocomplete.commands.goToPreviousSuggestion%` | ❌ Never registered — placeholder          |
 
 Additional commands registered **programmatically** but NOT declared in package.json:
 
 | Command ID                                                 | Registered in                                                                                 | Notes                                       |
 | ---------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------- |
-| `kilo-code.autocomplete.reload`                            | `src/services/autocomplete/index.ts:16`                                                       | Reloads settings and model                  |
-| `kilo-code.autocomplete.codeActionQuickFix`                | `src/services/autocomplete/index.ts:21`                                                       | No-op stub                                  |
-| `kilo-code.autocomplete.showIncompatibilityExtensionPopup` | `src/services/autocomplete/index.ts:31`                                                       | Shows Copilot conflict dialog               |
-| `kilo-code.autocomplete.disable`                           | `src/services/autocomplete/index.ts:36`                                                       | Disables autocomplete                       |
-| `kilocode.autocomplete.inline-completion.accepted`         | `src/services/autocomplete/classic-auto-complete/AutocompleteInlineCompletionProvider.ts:313` | Telemetry callback when suggestion accepted |
+| `kilocode-lite.new.autocomplete.reload`                            | `src/services/autocomplete/index.ts:16`                                                       | Reloads settings and model                  |
+| `kilocode-lite.new.autocomplete.codeActionQuickFix`                | `src/services/autocomplete/index.ts:21`                                                       | No-op stub                                  |
+| `kilocode-lite.new.autocomplete.showIncompatibilityExtensionPopup` | `src/services/autocomplete/index.ts:31`                                                       | Shows Copilot conflict dialog               |
+| `kilocode-lite.new.autocomplete.disable`                           | `src/services/autocomplete/index.ts:36`                                                       | Disables autocomplete                       |
+| `kilocode-lite.new.autocomplete.inline-completion.accepted`         | `src/services/autocomplete/classic-auto-complete/AutocompleteInlineCompletionProvider.ts:313` | Telemetry callback when suggestion accepted |
 | `kilo-code.jetbrains.getInlineCompletions`                 | `src/services/autocomplete/AutocompleteJetbrainsBridge.ts:289`                                | JetBrains bridge                            |
 
 ### 1.3 Keybindings
@@ -50,13 +50,13 @@ From `src/package.json` `contributes.keybindings`:
 
 | Command                                                    | Key      | Mac     | When Clause                                                                                                                                                 |
 | ---------------------------------------------------------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `kilo-code.autocomplete.cancelSuggestions`                 | `Escape` | same    | `editorTextFocus && !editorTabMovesFocus && !inSnippetMode && kilocode.autocomplete.hasSuggestions`                                                         |
-| `kilo-code.autocomplete.generateSuggestions`               | `Ctrl+L` | `Cmd+L` | `editorTextFocus && !editorTabMovesFocus && !inSnippetMode && kilocode.autocomplete.enableSmartInlineTaskKeybinding && !github.copilot.completions.enabled` |
-| `kilo-code.autocomplete.showIncompatibilityExtensionPopup` | `Ctrl+L` | `Cmd+L` | `editorTextFocus && !editorTabMovesFocus && !inSnippetMode && kilocode.autocomplete.enableSmartInlineTaskKeybinding && github.copilot.completions.enabled`  |
+| `kilocode-lite.new.autocomplete.cancelSuggestions`                 | `Escape` | same    | `editorTextFocus && !editorTabMovesFocus && !inSnippetMode && kilocode-lite.new.autocomplete.hasSuggestions`                                                         |
+| `kilocode-lite.new.autocomplete.generateSuggestions`               | `Ctrl+L` | `Cmd+L` | `editorTextFocus && !editorTabMovesFocus && !inSnippetMode && kilocode-lite.new.autocomplete.enableSmartInlineTaskKeybinding && !github.copilot.completions.enabled` |
+| `kilocode-lite.new.autocomplete.showIncompatibilityExtensionPopup` | `Ctrl+L` | `Cmd+L` | `editorTextFocus && !editorTabMovesFocus && !inSnippetMode && kilocode-lite.new.autocomplete.enableSmartInlineTaskKeybinding && github.copilot.completions.enabled`  |
 
-**Note**: The `Escape` keybinding references `kilocode.autocomplete.hasSuggestions` which is
-**never set** in code via `setContext`. This means the keybinding is currently inert
-(would never activate).
+**Note**: The `Escape` keybinding references `kilocode-lite.new.autocomplete.hasSuggestions`, which is
+set via `setContext` when suggestions appear/disappear. This means the keybinding activates only when
+autocomplete suggestions are currently visible.
 
 ### 1.4 Menus
 
@@ -90,7 +90,7 @@ vscode.languages.registerCodeActionsProvider("*", autocompleteManager.codeAction
 ```
 
 The `AutocompleteCodeActionProvider` (`src/services/autocomplete/AutocompleteCodeActionProvider.ts`)
-provides a QuickFix action that triggers `kilo-code.autocomplete.generateSuggestions`.
+provides a QuickFix action that triggers `kilocode-lite.new.autocomplete.generateSuggestions`.
 
 ---
 
@@ -138,7 +138,7 @@ On construction (`src/services/autocomplete/AutocompleteServiceManager.ts:37-61`
 On load (`src/services/autocomplete/AutocompleteServiceManager.ts:70-99`):
 
 1. Reads `ghostServiceSettings` from `ContextProxy`
-2. Sets context key `kilocode.autocomplete.enableSmartInlineTaskKeybinding` via `setContext`
+2. Sets context key `kilocode-lite.new.autocomplete.enableSmartInlineTaskKeybinding` via `setContext`
 3. Registers/unregisters `InlineCompletionItemProvider` based on `enableAutoTrigger` state
 4. Updates status bar
 5. Writes enriched settings (with provider/model info) back to `ContextProxy`
@@ -150,8 +150,8 @@ On load (`src/services/autocomplete/AutocompleteServiceManager.ts:70-99`):
 
 | Context Key                                             | Where Set                                                         | Purpose                                                  |
 | ------------------------------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------- |
-| `kilocode.autocomplete.enableSmartInlineTaskKeybinding` | `AutocompleteServiceManager.updateGlobalContext()` (line 286-290) | Controls whether `Cmd+L` / `Ctrl+L` keybinding is active |
-| `kilocode.autocomplete.hasSuggestions`                  | ❌ Never set                                                      | Would control `Escape` keybinding — currently dead code  |
+| `kilocode-lite.new.autocomplete.enableSmartInlineTaskKeybinding` | `AutocompleteServiceManager.updateGlobalContext()` (line 286-290) | Controls whether `Cmd+L` / `Ctrl+L` keybinding is active |
+| `kilocode-lite.new.autocomplete.hasSuggestions`                  | ✅ Set by autocomplete providers                                   | Controls whether `Escape` keybinding is active           |
 
 ---
 
@@ -177,7 +177,7 @@ Three autocomplete-related message types are handled:
      const validatedSettings = autocompleteServiceSettingsSchema.parse(message.values)
      await updateGlobalState("ghostServiceSettings", validatedSettings)
      await provider.postStateToWebview()
-     vscode.commands.executeCommand("kilo-code.autocomplete.reload")
+     vscode.commands.executeCommand("kilocode-lite.new.autocomplete.reload")
    ```
 
    This is the primary way the webview UI writes autocomplete settings.
@@ -198,7 +198,7 @@ Three autocomplete-related message types are handled:
 
 ### 4.3 Autocomplete reload triggered from webview
 
-The `kilo-code.autocomplete.reload` command is also triggered when API profiles change:
+The `kilocode-lite.new.autocomplete.reload` command is also triggered when API profiles change:
 
 - `saveApiConfiguration` (line 2231)
 - `upsertApiConfiguration` (lines 2294, 2303)
@@ -404,7 +404,7 @@ To recreate the autocomplete as a standalone extension:
 1. **package.json**: 6 declared commands + keybindings + code action declaration
 2. **Activation**: `onLanguage` + `onStartupFinished`, register providers on activate
 3. **Providers**: `InlineCompletionItemProvider` (file scheme), `CodeActionsProvider` (all langs)
-4. **Context keys**: `kilocode.autocomplete.enableSmartInlineTaskKeybinding` (via setContext)
+4. **Context keys**: `kilocode-lite.new.autocomplete.enableSmartInlineTaskKeybinding` (via setContext)
 5. **Status bar**: Right-aligned status bar item with custom icon
 6. **State**: Single `ghostServiceSettings` object in global state (or a new key)
 7. **Webview communication**: Message types `ghostServiceSettings`, `snoozeAutocomplete`, `requestChatCompletion`, `chatCompletionAccepted`

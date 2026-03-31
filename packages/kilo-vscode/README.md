@@ -6,8 +6,10 @@ It bundles the internal Kilo runtime, launches it in the background, and renders
 
 ## Install
 
-- Marketplace: https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code
-- Releases: https://github.com/Kilo-Org/kilocode/releases
+- VSIX (this fork): https://github.com/un4gt/kilocode/releases
+- Marketplace (upstream / official): https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code
+
+This fork uses a separate extension identifier (`un4gt.kilocode-lite`) so it can be installed alongside upstream.
 
 ## Highlights
 
@@ -42,3 +44,9 @@ bun run --cwd packages/kilo-vscode snapshot:install
 ## License
 
 This package is distributed under the MIT License. See [LICENSE](/LICENSE).
+
+## Acknowledgements
+
+This extension is a fork of the MIT-licensed Kilo Code project. Thanks to the upstream authors and contributors.
+
+- Upstream repository: https://github.com/Kilo-Org/kilocode

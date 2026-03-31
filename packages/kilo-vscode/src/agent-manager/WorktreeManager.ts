@@ -531,7 +531,11 @@ export class WorktreeManager {
 
       const worktreeGitDir = path.resolve(worktreePath, match[1].trim())
       const mainGitDir = path.dirname(path.dirname(worktreeGitDir))
-      await this.addExcludeEntry(path.join(mainGitDir, "info", "exclude"), `${KILO_DIR}/`, "kilocode-- session metadata")
+      await this.addExcludeEntry(
+        path.join(mainGitDir, "info", "exclude"),
+        `${KILO_DIR}/`,
+        "kilocode-- session metadata",
+      )
     } catch (error) {
       this.log(`Warning: Failed to update git exclude for worktree: ${error}`)
     }

@@ -15,25 +15,25 @@ export class KiloCodeActionProvider implements vscode.CodeActionProvider {
     const actions: vscode.CodeAction[] = []
 
     const add = new vscode.CodeAction("Add to kilocode--", vscode.CodeActionKind.RefactorRewrite)
-    add.command = { command: "kilo-code.new.addToContext", title: "Add to kilocode--" }
+    add.command = { command: "kilocode-lite.new.addToContext", title: "Add to kilocode--" }
     actions.push(add)
 
     const hasDiagnostics = context.diagnostics.length > 0
 
     if (hasDiagnostics) {
       const fix = new vscode.CodeAction("Fix with kilocode--", vscode.CodeActionKind.QuickFix)
-      fix.command = { command: "kilo-code.new.fixCode", title: "Fix with kilocode--" }
+      fix.command = { command: "kilocode-lite.new.fixCode", title: "Fix with kilocode--" }
       fix.isPreferred = true
       actions.push(fix)
     }
 
     if (!hasDiagnostics) {
       const explain = new vscode.CodeAction("Explain with kilocode--", vscode.CodeActionKind.RefactorRewrite)
-      explain.command = { command: "kilo-code.new.explainCode", title: "Explain with kilocode--" }
+      explain.command = { command: "kilocode-lite.new.explainCode", title: "Explain with kilocode--" }
       actions.push(explain)
 
       const improve = new vscode.CodeAction("Improve with kilocode--", vscode.CodeActionKind.RefactorRewrite)
-      improve.command = { command: "kilo-code.new.improveCode", title: "Improve with kilocode--" }
+      improve.command = { command: "kilocode-lite.new.improveCode", title: "Improve with kilocode--" }
       actions.push(improve)
     }
 

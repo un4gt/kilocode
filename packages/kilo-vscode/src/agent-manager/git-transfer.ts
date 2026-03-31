@@ -53,7 +53,11 @@ async function raw(args: string[], cwd: string): Promise<string> {
   return result.stdout.trim()
 }
 
-async function patch(args: string[], cwd: string, input: string): Promise<{ code: number; stdout: string; stderr: string }> {
+async function patch(
+  args: string[],
+  cwd: string,
+  input: string,
+): Promise<{ code: number; stdout: string; stderr: string }> {
   const tmp = await fs.mkdtemp(nodePath.join(os.tmpdir(), "kilo-patch-"))
   const file = nodePath.join(tmp, "patch.diff")
   const body = input.endsWith("\n") ? input : `${input}\n`

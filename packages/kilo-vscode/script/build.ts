@@ -34,6 +34,25 @@ const targets = [
   { target: "win32-x64", cliDir: "@kilocode/cli-windows-x64", binary: "kilo.exe" },
   { target: "win32-arm64", cliDir: "@kilocode/cli-windows-arm64", binary: "kilo.exe" },
 ]
+const requireAllTargets = process.env.KILO_REQUIRE_ALL_TARGETS === "1"
+const availableTargets = targets.filter((config) => existsSync(join(cliDistDir, config.cliDir, "bin", config.binary)))
+
+if (availableTargets.length === 0) {
+  throw new Error(`No CLI binaries found in ${cliDistDir}`)
+}
+
+if (requireAllTargets && availableTargets.length !== targets.length) {
+  const missing = targets
+    .filter((config) => !existsSync(join(cliDistDir, config.cliDir, "bin", config.binary)))
+    .map((config) => `${config.cliDir}/bin/${config.binary}`)
+  throw new Error(`Missing CLI binaries for release build:\n${missing.join("\n")}`)
+}
+
+if (!requireAllTargets && availableTargets.length !== targets.length) {
+  console.log(
+    `\n⚠️  Found ${availableTargets.length}/${targets.length} CLI targets locally; packaging available targets only.`,
+  )
+}
 
 const binDir = join(import.meta.dir, "..", "bin")
 const distDir = join(import.meta.dir, "..", "dist")
@@ -60,7 +79,7 @@ await $`bun run check-types`
 await $`bun run lint`
 await $`node ${join(import.meta.dir, "..", "esbuild.js")} --production`
 
-for (const config of targets) {
+for (const config of availableTargets) {
   console.log(`\n🎯 Processing target: ${config.target}`)
 
   if (existsSync(binDir)) {

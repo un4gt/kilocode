@@ -336,22 +336,22 @@ For a standalone extension you can keep these, or narrow them (e.g. only `onStar
 
 Commands declared in Kilo Code’s `package.json` (some are placeholders):
 
-- `kilo-code.autocomplete.generateSuggestions` (registered)
-- `kilo-code.autocomplete.cancelSuggestions` (declared, not registered)
-- `kilo-code.autocomplete.applyCurrentSuggestions` (declared, not registered)
-- `kilo-code.autocomplete.applyAllSuggestions` (declared, not registered)
-- `kilo-code.autocomplete.goToNextSuggestion` (declared, not registered)
-- `kilo-code.autocomplete.goToPreviousSuggestion` (declared, not registered)
+- `kilocode-lite.new.autocomplete.generateSuggestions` (registered)
+- `kilocode-lite.new.autocomplete.cancelSuggestions` (declared, not registered)
+- `kilocode-lite.new.autocomplete.applyCurrentSuggestions` (declared, not registered)
+- `kilocode-lite.new.autocomplete.applyAllSuggestions` (declared, not registered)
+- `kilocode-lite.new.autocomplete.goToNextSuggestion` (declared, not registered)
+- `kilocode-lite.new.autocomplete.goToPreviousSuggestion` (declared, not registered)
 
 See command table in [`investigation-vscode-integration.md`](src/services/autocomplete/docs/investigation-vscode-integration.md:23).
 
 Commands registered programmatically (must be declared if you want them visible/consistent):
 
-- `kilo-code.autocomplete.reload` ([`index.ts`](src/services/autocomplete/docs/investigation-vscode-integration.md:117))
-- `kilo-code.autocomplete.codeActionQuickFix` (stub)
-- `kilo-code.autocomplete.showIncompatibilityExtensionPopup`
-- `kilo-code.autocomplete.disable`
-- `kilocode.autocomplete.inline-completion.accepted` (acceptance callback)
+- `kilocode-lite.new.autocomplete.reload` ([`index.ts`](src/services/autocomplete/docs/investigation-vscode-integration.md:117))
+- `kilocode-lite.new.autocomplete.codeActionQuickFix` (stub)
+- `kilocode-lite.new.autocomplete.showIncompatibilityExtensionPopup`
+- `kilocode-lite.new.autocomplete.disable`
+- `kilocode-lite.new.autocomplete.inline-completion.accepted` (acceptance callback)
 - `kilo-code.jetbrains.getInlineCompletions` (JetBrains bridge)
 
 Recommendation for the new extension:
@@ -529,7 +529,7 @@ Change plan:
 
 - Inject `IAutocompleteSettingsStore`, `ITelemetryClient`, ignore-controller factory.
 - Replace any webview posting with an optional `IWebviewBridge`.
-- Ensure `setContext` keys are correctly set (notably `kilocode.autocomplete.enableSmartInlineTaskKeybinding`, see [`investigation-vscode-integration.md`](src/services/autocomplete/docs/investigation-vscode-integration.md:145)).
+- Ensure `setContext` keys are correctly set (notably `kilocode-lite.new.autocomplete.enableSmartInlineTaskKeybinding`, see [`investigation-vscode-integration.md`](src/services/autocomplete/docs/investigation-vscode-integration.md:145)).
 
 ### 6.3 `types.ts`
 
@@ -746,7 +746,7 @@ No profile resolver is needed in phase 1. The provider and model are fixed.
 
 ### 11.8 Command Prefix
 
-**Decision: Use `kilo-code.new.autocomplete.*`** to be consistent with the existing extension naming convention.
+**Decision: Use `kilocode-lite.new.autocomplete.*`** to be consistent with the existing extension naming convention.
 
 ### 11.9 NPM Dependencies
 

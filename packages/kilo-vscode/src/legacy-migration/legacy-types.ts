@@ -2,7 +2,7 @@
  * legacy-migration - Types for legacy Kilo Code extension (v5.x) data structures.
  *
  * These types represent the shapes stored in VS Code SecretStorage and on disk
- * by the legacy extension (kilocode.kilo-code v5.x, a Roo Code fork).
+ * by the legacy extension (un4gt.kilocode-lite v5.x, a Roo Code fork).
  * They are intentionally loose (allowing [key: string]: unknown) to tolerate
  * schema drift between legacy versions.
  */

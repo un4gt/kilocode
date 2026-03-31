@@ -10,13 +10,13 @@ submit one that will be an automatic ban from the project.
 
 ### Overview
 
-Kilo CLI is an AI-powered coding assistant that runs locally on your machine. It provides an agent system with access to powerful tools including shell execution, file operations, and web access.
+`kilocode-- (kilocode lite)` is an AI-powered VS Code extension with a bundled local runtime. It provides an agent system with access to powerful tools including shell execution and file operations (and may access the network depending on your configuration).
 
 ### No Sandbox
 
-Kilo CLI does **not** sandbox the agent. The permission system exists as a UX feature to help users stay aware of what actions the agent is taking - it prompts for confirmation before executing commands, writing files, etc. However, it is not designed to provide security isolation.
+The bundled runtime does **not** sandbox the agent. The permission system exists as a UX feature to help users stay aware of what actions the agent is taking - it prompts for confirmation before executing commands, writing files, etc. However, it is not designed to provide security isolation.
 
-If you need true isolation, run Kilo CLI inside a Docker container or VM.
+If you need true isolation, run the extension/runtime inside a Docker container or VM.
 
 ### Server Mode
 
@@ -38,8 +38,10 @@ Server mode is opt-in only. When enabled, set `KILO_SERVER_PASSWORD` to require 
 
 We value the contributions of the security research community and recognize the importance of a coordinated approach to vulnerability disclosure. If you have discovered a security vulnerability, we encourage you to let us know immediately. We welcome the opportunity to work with you to resolve the issue promptly.
 
-Please email your findings to [security@kilo.ai](mailto:security@kilo.ai). We will acknowledge your report and work with you to resolve the issue.
+Please report vulnerabilities via GitHub Security Advisories:
+
+- https://github.com/un4gt/kilocode/security/advisories/new
 
 After the initial reply to your report, the security team will keep you informed of the progress towards a fix and full announcement, and may ask for additional information or guidance.
 
-For more details, see our [Security Disclosure](https://kilo.ai/security) page.
+If your report is specific to upstream hosted services (for example `api.kilo.ai`), please contact the upstream project separately as this fork does not operate those services.

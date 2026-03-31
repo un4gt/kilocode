@@ -49,7 +49,7 @@ describe("Extension — package.json command sync", () => {
     // Commands generated via template literals can't be extracted by regex,
     // so verify the dynamic registration pattern exists in source instead.
     const dynamic: Record<string, string> = {
-      "kilo-code.new.agentManager.jumpTo": "registerCommand(`kilo-code.new.agentManager.jumpTo${",
+      "kilocode-lite.new.agentManager.jumpTo": "registerCommand(`kilocode-lite.new.agentManager.jumpTo${",
     }
 
     const missing: string[] = []
@@ -71,16 +71,12 @@ describe("Extension — package.json command sync", () => {
     ).toEqual([])
   })
 
-  /**
-   * All declared commands must use the kilo-code.new. prefix.
-   * The legacy kilo-code.* namespace (without .new.) belongs to the old
-   * extension and must not be reintroduced.
-   */
-  it("all declared commands use the kilo-code.new. prefix", () => {
-    const bad = declared.filter((cmd) => !cmd.startsWith("kilo-code.new."))
+  it("all declared commands use the kilocode-lite.new. prefix", () => {
+    const bad = declared.filter((cmd) => !cmd.startsWith("kilocode-lite.new."))
     expect(
       bad,
-      `Commands without "kilo-code.new." prefix — use the namespaced form:\n` + bad.map((b) => `  - ${b}`).join("\n"),
+      `Commands without "kilocode-lite.new." prefix — use the namespaced form:\n` +
+        bad.map((b) => `  - ${b}`).join("\n"),
     ).toEqual([])
   })
 })

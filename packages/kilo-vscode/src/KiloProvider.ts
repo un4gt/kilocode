@@ -84,7 +84,10 @@ type KiloProviderOptions = {
 }
 
 export class KiloProvider implements vscode.WebviewViewProvider, TelemetryPropertiesProvider {
-  public static readonly viewType = "kilo-code.SidebarProvider"
+  public static readonly viewType = "kilocode-lite.SidebarProvider"
+
+  private static readonly extensionId = "un4gt.kilocode-lite"
+  private static readonly settingPrefix = "kilocode-lite.new"
 
   private webview: vscode.Webview | null = null
   private currentSession: Session | null = null
@@ -94,7 +97,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
   private loginAttempt = 0
   private isWebviewReady = false
   private readonly extensionVersion =
-    vscode.extensions.getExtension("kilocode.kilo-code")?.packageJSON?.version ?? "unknown"
+    vscode.extensions.getExtension(KiloProvider.extensionId)?.packageJSON?.version ?? "unknown"
   /** Cached providersLoaded payload so requestProviders can be served before client is ready */
   private cachedProvidersMessage: unknown = null
   /** Coalesce provider refreshes — at most one follow-up rerun when a request lands mid-flight. */
@@ -176,7 +179,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
 
   getTelemetryProperties(): Record<string, unknown> {
     return {
-      appName: "kilo-code",
+      appName: "kilocode-lite",
       appVersion: this.extensionVersion,
       platform: "vscode",
       editorName: vscode.env.appName,
@@ -242,7 +245,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
 
     // Re-send ready so the webview can recover after refresh.
     if (serverInfo) {
-      const langConfig = vscode.workspace.getConfiguration("kilo-code.new")
+      const langConfig = vscode.workspace.getConfiguration(KiloProvider.settingPrefix)
       this.postMessage({
         type: "ready",
         serverInfo,
@@ -553,10 +556,10 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
           }
           break
         case "openSettingsPanel":
-          vscode.commands.executeCommand("kilo-code.new.settingsButtonClicked", message.tab)
+          vscode.commands.executeCommand("kilocode-lite.new.settingsButtonClicked", message.tab)
           break
         case "openChanges":
-          vscode.commands.executeCommand("kilo-code.new.showChanges")
+          vscode.commands.executeCommand("kilocode-lite.new.showChanges")
           break
         case "continueInWorktree":
           if (message.sessionId && this.continueInWorktreeHandler) {
@@ -579,7 +582,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
           )
           break
         case "openSubAgentViewer":
-          vscode.commands.executeCommand("kilo-code.new.openSubAgentViewer", message.sessionID, message.title)
+          vscode.commands.executeCommand("kilocode-lite.new.openSubAgentViewer", message.sessionID, message.title)
           break
         case "previewImage":
           this.handlePreviewImage(message.dataUrl, message.filename)
@@ -637,7 +640,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
           break
         case "setLanguage":
           await vscode.workspace
-            .getConfiguration("kilo-code.new")
+            .getConfiguration(KiloProvider.settingPrefix)
             .update("language", message.locale || undefined, vscode.ConfigurationTarget.Global)
           this.connectionService.notifyLanguageChanged(message.locale as string)
           break
@@ -652,7 +655,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
           ])
           if (allowedKeys.has(message.key)) {
             await vscode.workspace
-              .getConfiguration("kilo-code.new.autocomplete")
+              .getConfiguration(`${KiloProvider.settingPrefix}.autocomplete`)
               .update(message.key, message.value, vscode.ConfigurationTarget.Global)
             this.sendAutocompleteSettings()
           }
@@ -977,7 +980,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
       this.connectionState = this.connectionService.getConnectionState()
 
       if (serverInfo) {
-        const langConfig = vscode.workspace.getConfiguration("kilo-code.new")
+        const langConfig = vscode.workspace.getConfiguration(KiloProvider.settingPrefix)
         this.postMessage({
           type: "ready",
           serverInfo,
@@ -1345,7 +1348,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
             generation = this.providersGeneration
             continue
           }
-          const settings = vscode.workspace.getConfiguration("kilo-code.new.model")
+          const settings = vscode.workspace.getConfiguration(`${KiloProvider.settingPrefix}.model`)
           const message = {
             type: "providersLoaded",
             providers: indexProvidersById(response.all),
@@ -1806,8 +1809,8 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
    * Read notification/sound settings from VS Code config and push to webview.
    */
   private sendNotificationSettings(): void {
-    const notifications = vscode.workspace.getConfiguration("kilo-code.new.notifications")
-    const sounds = vscode.workspace.getConfiguration("kilo-code.new.sounds")
+    const notifications = vscode.workspace.getConfiguration(`${KiloProvider.settingPrefix}.notifications`)
+    const sounds = vscode.workspace.getConfiguration(`${KiloProvider.settingPrefix}.sounds`)
     this.postMessage({
       type: "notificationSettingsLoaded",
       settings: {
@@ -2266,21 +2269,15 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
 
   /**
    * Handle a generic setting update from the webview.
-   * The key uses dot notation relative to `kilo-code.new` (e.g. "browserAutomation.enabled").
+   * The key uses dot notation relative to `kilocode-lite.new` (e.g. "browserAutomation.enabled").
    */
   private async handleUpdateSetting(key: string, value: unknown): Promise<void> {
     const { section, leaf } = buildSettingPath(key)
-    const config = vscode.workspace.getConfiguration(`kilo-code.new${section ? `.${section}` : ""}`)
+    const config = vscode.workspace.getConfiguration(`${KiloProvider.settingPrefix}${section ? `.${section}` : ""}`)
     await config.update(leaf, value, vscode.ConfigurationTarget.Global)
   }
 
-  /**
-   * Reset all "kilo-code.new.*" extension settings to their defaults by reading
-   * contributes.configuration from the extension's package.json at runtime.
-   * Only resets settings under the "kilo-code.new." namespace to avoid touching
-   * settings from the previous version of the extension which shares the same
-   * extension ID and "kilo-code.*" namespace.
-   */
+  /** Reset all "kilocode-lite.new.*" extension settings to their defaults. */
   private async handleResetAllSettings(): Promise<void> {
     const confirmed = await vscode.window.showWarningMessage(
       "Reset all kilocode-- extension settings to defaults?",
@@ -2289,8 +2286,8 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
     )
     if (confirmed !== "Reset") return
 
-    const prefix = "kilo-code.new."
-    const ext = vscode.extensions.getExtension("kilocode.kilo-code")
+    const prefix = `${KiloProvider.settingPrefix}.`
+    const ext = vscode.extensions.getExtension(KiloProvider.extensionId)
     const properties = ext?.packageJSON?.contributes?.configuration?.properties as Record<string, unknown> | undefined
     if (!properties) return
 
@@ -2313,7 +2310,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
    * Read the current browser automation settings and push them to the webview.
    */
   private sendBrowserSettings(): void {
-    const config = vscode.workspace.getConfiguration("kilo-code.new.browserAutomation")
+    const config = vscode.workspace.getConfiguration(`${KiloProvider.settingPrefix}.browserAutomation`)
     this.postMessage({
       type: "browserSettingsLoaded",
       settings: {
@@ -2422,7 +2419,7 @@ export class KiloProvider implements vscode.WebviewViewProvider, TelemetryProper
    * Read autocomplete settings from VS Code configuration and push to the webview.
    */
   private sendAutocompleteSettings(): void {
-    const config = vscode.workspace.getConfiguration("kilo-code.new.autocomplete")
+    const config = vscode.workspace.getConfiguration(`${KiloProvider.settingPrefix}.autocomplete`)
     this.postMessage({
       type: "autocompleteSettingsLoaded",
       settings: {
